@@ -1,13 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import FormReservation from "./utils/FormReservation";
 
 class Welcome extends React.Component {
   render() {
-    return <div></div>;
+    return (
+      <div className="container">
+        <FormReservation />
+      </div>
+    );
   }
 }
 
-function mapStateToProps(state) {
-  return { auth: state.auth.authenticated };
-}
-export default connect(mapStateToProps)(Welcome);
+export default Welcome;

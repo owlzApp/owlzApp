@@ -1,5 +1,5 @@
 {
-  "name": "Owlz",
+  "name": "owlz",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/captainflo/Owlzv2.git"
+    "url": "git+https://github.com/owlzApp/owlzApp.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/captainflo/Owlzv2/issues"
+    "url": "https://github.com/owlzApp/owlzApp/issues"
   },
-  "homepage": "https://github.com/captainflo/Owlzv2#readme",
+  "homepage": "https://github.com/owlzApp/owlzApp#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",

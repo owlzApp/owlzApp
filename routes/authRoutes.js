@@ -1,21 +1,20 @@
 const Authentication = require("../controllers/authentication");
 const passport = require("passport");
 
-const requireAuth = passport.authenticate('jwt', {session: true});
-const requireSignin = passport.authenticate('local', {session: false});
+const requireAuth = passport.authenticate("jwt", { session: true });
+const requireSignin = passport.authenticate("local", { session: false });
 
 module.exports = app => {
   // Signup by Email with JWT
-   app.post('/signup', Authentication.signup);
+  app.post("/signup", Authentication.signup);
   // Signin by Email with JWT
-   app.post('/signin', requireSignin, Authentication.signin);
+  app.post("/signin", requireSignin, Authentication.signin);
   // Fetch by id with JWT
-  app.get('/api/user/:id', Authentication.fetchUser);
+  app.get("/api/user/:id", Authentication.fetchUser);
   // Edit by id with JWT
-  app.post('/api/user/:id', Authentication.editUser);
+  app.post("/api/user/:id", Authentication.editUser);
   // delete by id with JWT
-  app.delete('/api/user/:id', Authentication.deleteUser)
-
+  app.delete("/api/user/:id", Authentication.deleteUser);
 
   // Google Auth
   app.get(
@@ -24,9 +23,11 @@ module.exports = app => {
       scope: ["profile", "email"]
     })
   );
-  app.get("/auth/google/callback", passport.authenticate("google"),
-    (req, res) =>{
-      res.redirect("/feature")
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/feature");
     }
   );
 
@@ -52,7 +53,12 @@ module.exports = app => {
   );
 
   // Linkedin
-  app.get("/auth/linkedin", passport.authenticate("linkedin", { scope: [ 'r_liteprofile', 'r_emailaddress', 'w_member_social'] }));
+  app.get(
+    "/auth/linkedin",
+    passport.authenticate("linkedin", {
+      scope: ["r_liteprofile", "r_emailaddress", "w_member_social"]
+    })
+  );
   app.get(
     "/auth/linkedin/callback",
     passport.authenticate("linkedin", { failureRedirect: "/" }),
@@ -65,7 +71,7 @@ module.exports = app => {
   // Logout user
   app.get("/api/logout", (req, res) => {
     req.logout();
-    res.redirect('/')
+    res.redirect("/");
   });
 
   // Current User
