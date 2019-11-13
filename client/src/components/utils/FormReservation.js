@@ -17,15 +17,19 @@ class FormReservation extends React.Component {
     age: "",
     phone: "",
     message: "",
-    backgroundColor1: "true"
+    errorEmail: ""
   };
 
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step + 1
-    });
-    console.log(this.state.step);
+  nextStep1 = () => {
+    if (this.state.email === "") {
+      console.log("empty");
+      this.setState({ errorEmail: "Email must be provide" });
+    } else {
+      const { step } = this.state;
+      this.setState({
+        step: step + 1
+      });
+    }
   };
 
   prevStep = () => {
@@ -33,7 +37,6 @@ class FormReservation extends React.Component {
     this.setState({
       step: step - 1
     });
-    console.log(this.state.step);
   };
 
   handleChange = event => {
@@ -61,7 +64,11 @@ class FormReservation extends React.Component {
     switch (this.state.step) {
       case 1:
         return (
-          <FormSilde1 next={this.nextStep} handleChange={this.handleChange} />
+          <FormSilde1
+            next={this.nextStep1}
+            handleChange={this.handleChange}
+            error={this.state.errorEmail}
+          />
         );
       case 2:
         return (

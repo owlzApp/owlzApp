@@ -2,7 +2,7 @@ import React from "react";
 import { Field } from "redux-form";
 
 const FormSilde1 = props => {
-  const { preogressOne, next, handleChange } = props;
+  const { next, handleChange, error } = props;
   return (
     <div>
       <div id="progressbar">
@@ -24,6 +24,7 @@ const FormSilde1 = props => {
         placeholder="email"
         onChange={handleChange}
       />
+      <div>{error}</div>
       <button onClick={next} type="button">
         next
       </button>

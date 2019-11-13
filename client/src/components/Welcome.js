@@ -1,11 +1,11 @@
 import React from "react";
-import FormReservation from "./utils/FormReservation";
+import WizardForm from "./form/WizardForm";
 
 class Welcome extends React.Component {
   render() {
     return (
       <div className="container">
-        <FormReservation />
+        <WizardForm />
       </div>
     );
   }

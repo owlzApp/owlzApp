@@ -1,9 +1,8 @@
-#progressbar{
+.progressbar{
   display: flex;
 }
 
 .item {
-  width: 100%;
   align-items: center;
   text-align: center;
   width: 50px;
@@ -11,6 +10,7 @@
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
+  background-color: cyan;
 }
 
 .active{
