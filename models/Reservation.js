@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Define our model
 const reservationSchema = new Schema({
   email: String,
-  phone: String,
+  lastName: String,
   firstName: String,
   message: String
 });

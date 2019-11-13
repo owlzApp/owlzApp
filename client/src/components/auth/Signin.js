@@ -1,13 +1,13 @@
-import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
-import * as actions from '../actions';
+import React from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { reduxForm, Field } from "redux-form";
+import * as actions from "../actions";
 
 class Signin extends React.Component {
   onSubmit = formProps => {
     this.props.signin(formProps, () => {
-      this.props.history.push(`/feature`);
+      this.props.history.push(`/`);
     });
   };
 
@@ -22,7 +22,7 @@ class Signin extends React.Component {
           </h4>
 
           <div className="input-field">
-            <div style={{ color: 'red', marginLeft: '45px' }}>
+            <div style={{ color: "red", marginLeft: "45px" }}>
               {this.props.errorMessage}
             </div>
             <i className="material-icons prefix">email</i>
@@ -50,7 +50,7 @@ class Signin extends React.Component {
           </button>
         </form>
         <ul>
-          <li style={{ listStyle: 'none', paddingBottom: '10px' }}>
+          <li style={{ listStyle: "none", paddingBottom: "10px" }}>
             <a
               href="/auth/google"
               className="waves-effect waves-light btn social google"
@@ -73,9 +73,6 @@ function mapStateToPros(state) {
 }
 
 export default compose(
-  connect(
-    mapStateToPros,
-    actions
-  ),
-  reduxForm({ form: 'signin' })
+  connect(mapStateToPros, actions),
+  reduxForm({ form: "signin" })
 )(Signin);

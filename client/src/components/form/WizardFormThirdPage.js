@@ -9,7 +9,7 @@ const WizardFormThirdPage = props => {
       <div>
         <label>Notes</label>
         <div>
-          <Field name="notes" component="textarea" placeholder="Notes" />
+          <Field name="message" component="textarea" placeholder="message" />
         </div>
       </div>
       <div>

@@ -5,6 +5,8 @@ import WizardFormThirdPage from "./WizardFormThirdPage";
 import ProgressBar from "./ProgressBar";
 import "../css/formReservation.css";
 import "../css/ProgressBar.css";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class WizardForm extends Component {
   constructor(props) {
@@ -37,6 +39,9 @@ class WizardForm extends Component {
 
   onSubmit = form => {
     console.log(form);
+    this.props.sendReservation(form, () => {
+      this.props.history.push(`/signin`);
+    });
   };
 
   render() {
@@ -67,4 +72,4 @@ class WizardForm extends Component {
   }
 }
 
-export default WizardForm;
+export default connect(null, actions)(WizardForm);
