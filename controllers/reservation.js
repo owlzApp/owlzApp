@@ -1,6 +1,7 @@
 const Reservation = require("../models/Reservation");
 const sgMail = require("@sendgrid/mail");
 const config = require("../config/keys");
+const templateEmail = require("../services/templateEmail");
 
 exports.send = function(req, res, next) {
   const email = req.body.email;
