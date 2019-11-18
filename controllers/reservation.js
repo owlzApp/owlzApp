@@ -31,7 +31,7 @@ exports.send = function(req, res, next) {
     from: "owlz.service@gmail.com",
     subject: `You have new reservation from ${firstName} ${lastName}`,
     text: `Hey budy you have a reservation email: ${email} Message: ${message}`,
-    html: `<strong>Hey budy you have a reservation email: ${email} Message: ${message}</strong>`
+    html: templateEmail(req.body)
   };
   sgMail.send(msg);
 
