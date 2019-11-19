@@ -18,6 +18,14 @@ const validate = values => {
     errors.phone = "Invalid phone number, must be 10 digits";
   }
 
+  if (!values.interest) {
+    errors.interest = "Required";
+  }
+
+  if (!values.people) {
+    errors.people = "Required";
+  }
+
   if (!values.sex) {
     errors.sex = "Required";
   }

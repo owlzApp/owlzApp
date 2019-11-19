@@ -15,9 +15,15 @@ class WizardForm extends Component {
     this.previousPage = this.previousPage.bind(this);
     this.state = {
       page: 1,
-      color: "blue"
+      color: "blue",
+      phone: "",
+      errorPhone: ""
     };
   }
+
+  handleOnChange = value => {
+    this.setState({ phone: value });
+  };
 
   renderProgressBar = () => {
     switch (this.state.page) {
@@ -30,7 +36,12 @@ class WizardForm extends Component {
     }
   };
   nextPage() {
-    this.setState({ page: this.state.page + 1 });
+    if (this.state.phone !== "" && this.state.phone !== "+") {
+      this.setState({ page: this.state.page + 1 });
+      this.setState({ errorPhone: "" });
+    } else {
+      this.setState({ errorPhone: "phone must be required" });
+    }
   }
 
   previousPage() {
@@ -38,10 +49,18 @@ class WizardForm extends Component {
   }
 
   onSubmit = form => {
-    console.log(form);
-    this.props.sendReservation(form, () => {
-      this.props.history.push(`/signin`);
-    });
+    const finalForm = {
+      firstName: form.firstName,
+      lastName: form.lastName,
+      email: form.email,
+      phone: this.state.phone,
+      interest: form.interest,
+      people: form.people
+    };
+    console.log(finalForm);
+    // this.props.sendReservation(finalForm, () => {
+    //   this.props.history.push(`/signin`);
+    // });
   };
 
   render() {
@@ -52,7 +71,14 @@ class WizardForm extends Component {
           <div className="row">
             <h4 className="center">Make your Reservation</h4>
             {this.renderProgressBar()}
-            {page === 1 && <WizardFormFirstPage onSubmit={this.nextPage} />}
+            {page === 1 && (
+              <WizardFormFirstPage
+                onSubmit={this.nextPage}
+                handleOnChange={this.handleOnChange}
+                value={this.state.phone}
+                errorPhone={this.state.errorPhone}
+              />
+            )}
             {page === 2 && (
               <WizardFormSecondPage
                 previousPage={this.previousPage}

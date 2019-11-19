@@ -1,13 +1,57 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
-import renderField from "./renderField";
+const interests = [
+  "Night Club",
+  "Bar",
+  "restaurant",
+  "Event Outside",
+  "Strip Club",
+  "Boat",
+  "Multiple"
+];
+const peoples = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "+10"];
+
+const renderColorSelector = ({ input, meta: { touched, error } }) => (
+  <div>
+    <select {...input}>
+      <option value="">Select your interest...</option>
+      {interests.map(val => (
+        <option value={val} key={val}>
+          {val}
+        </option>
+      ))}
+    </select>
+    {touched && error && <span>{error}</span>}
+  </div>
+);
+
+const renderPepoleSelector = ({ input, meta: { touched, error } }) => (
+  <div>
+    <select {...input}>
+      <option value="">Number...</option>
+      {peoples.map(val => (
+        <option value={val} key={val}>
+          {val}
+        </option>
+      ))}
+    </select>
+    {touched && error && <span>{error}</span>}
+  </div>
+);
 
 const WizardFormSecondPage = props => {
   const { handleSubmit, previousPage } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <Field name="email" type="email" component={renderField} label="Email" />
+      <div>
+        <label>Principal Interest or Activity</label>
+        <Field name="interest" component={renderColorSelector} />
+      </div>
+      <div>
+        <label>How many people</label>
+        <Field name="people" component={renderPepoleSelector} />
+      </div>
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous

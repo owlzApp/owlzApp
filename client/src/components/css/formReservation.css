@@ -15,3 +15,11 @@
   -o-transition: .1s;
   transition: .1s;
 }
+.react-tel-input .flag-dropdown {
+  right: 0;
+  background-color: #fff !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: 1px solid #eaeaea !important;
+}
