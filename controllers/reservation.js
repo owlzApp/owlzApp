@@ -8,6 +8,10 @@ exports.send = function(req, res, next) {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const message = req.body.message;
+  const phone = req.body.phone;
+  const people = req.body.people;
+  const interest = req.body.interest;
+
   console.log(req.body);
 
   if (!email || !firstName) {
@@ -21,12 +25,15 @@ exports.send = function(req, res, next) {
     email: email,
     firstName: firstName,
     lastName: lastName,
-    message: message
+    message: message,
+    phone: phone,
+    people: people,
+    interest: interest
   });
 
   // Send Email
   sgMail.setApiKey(config.sendGrid);
-  const msg = {
+  let msg = {
     to: "owlz.service@gmail.com",
     from: "owlz.service@gmail.com",
     subject: `You have new reservation from ${firstName} ${lastName}`,
@@ -35,9 +42,10 @@ exports.send = function(req, res, next) {
   };
   sgMail.send(msg);
 
-  reservation.save(function(error) {
+  reservation.save(function(error, reservation) {
     if (error) {
       return next(error);
     }
+    res.send(reservation);
   });
 };

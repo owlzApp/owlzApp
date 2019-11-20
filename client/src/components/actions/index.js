@@ -112,11 +112,12 @@ export const deleteUser = (id, callback) => async dispatch => {
 };
 
 // Send Reservation
-export const sendReservation = (formProps, callback) => async dispatch => {
+export const sendReservation = (finalForm, callback) => async dispatch => {
   try {
-    const response = await axios.post(`/api/send`, formProps);
+    console.log(finalForm);
+    const response = await axios.post(`/api/send`, finalForm);
     dispatch({ type: SEND_RESERVATION, payload: response.data });
-    callback(); /* history callback */
+    callback();
   } catch (e) {
     dispatch({
       type: RESERVATION_ERROR,

@@ -23,3 +23,11 @@
   border-top: none !important;
   border-bottom: 1px solid #eaeaea !important;
 }
+
+.react-tel-input .country-list {
+  margin: 10px  0 10px -150px;
+}
+
+@media only screen and (max-width: 600px) {
+  
+}

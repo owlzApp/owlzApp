@@ -3,13 +3,12 @@ import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
 import renderField from "./renderField";
 import RenderFieldPhone from "./renderFieldPhone";
-
 const WizardFormFirstPage = props => {
   const { handleSubmit, handleOnChange, value, errorPhone } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
-        <div className="col m6">
+        <div className="col m6 s12">
           <Field
             name="firstName"
             type="text"
@@ -17,7 +16,7 @@ const WizardFormFirstPage = props => {
             label="First Name"
           />
         </div>
-        <div className="col m6">
+        <div className="col m6 s12">
           <Field
             name="lastName"
             type="text"
@@ -27,11 +26,11 @@ const WizardFormFirstPage = props => {
         </div>
       </div>
       <div className="row">
-        <div className="col m6">
+        <div className="col m6 s12">
           <RenderFieldPhone phone={handleOnChange} value={value} />
           <div>{errorPhone}</div>
         </div>
-        <div className="col m6">
+        <div className="col m6 s12">
           <Field
             name="email"
             type="email"

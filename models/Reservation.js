@@ -6,7 +6,10 @@ const reservationSchema = new Schema({
   email: String,
   lastName: String,
   firstName: String,
-  message: String
+  message: String,
+  phone: String,
+  people: String,
+  interest: String
 });
 
 // Create the model class

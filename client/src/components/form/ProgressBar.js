@@ -5,14 +5,20 @@ const ProgressBar = props => {
   const { progress, progress2, progress3 } = props;
   return (
     <div className="progressbar">
-      <div className="item" style={{ backgroundColor: progress }}>
-        <p>1</p>
+      <div className={`item ${progress}`}>
+        <p>
+          <i className="far fa-address-card"></i>
+        </p>
       </div>
-      <div className="item" style={{ backgroundColor: progress2 }}>
-        <p>2</p>
+      <div className={`item ${progress2}`}>
+        <p>
+          <i className="fas fa-running"></i>
+        </p>
       </div>
-      <div className="item" style={{ backgroundColor: progress3 }}>
-        <p>3</p>
+      <div className={`item ${progress3}`}>
+        <p>
+          <i className="fas fa-comment-dots"></i>
+        </p>
       </div>
     </div>
   );
