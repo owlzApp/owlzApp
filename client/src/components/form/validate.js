@@ -26,8 +26,8 @@ const validate = values => {
     errors.people = "Required";
   }
 
-  if (!values.sex) {
-    errors.sex = "Required";
+  if (!values.message) {
+    errors.message = "Required";
   }
   return errors;
 };

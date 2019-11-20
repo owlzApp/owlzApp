@@ -18,8 +18,8 @@ class Welcome extends React.Component {
         <div className={`alert ${this.state.close}`}>
           <span>
             <i className="far fa-check-circle"></i> {reservation.firstName}{" "}
-            {reservation.lastName}, your Request is on the way! You will be in
-            relation with owlz team soon...
+            {reservation.lastName}, your Request is on the way! Owlz team will
+            contact you on this number {reservation.phone}
             <b className="close-alert" onClick={this.closeAlert}>
               X
             </b>

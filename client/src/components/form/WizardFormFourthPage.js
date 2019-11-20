@@ -22,10 +22,10 @@ const WizardFormFourthPage = props => {
       <p>{FinalValue.people}</p>
       <p>{Phone}</p>
       <div>
-        <button type="button" className="previous" onClick={previousPage}>
+        <button type="button" className="previous btn" onClick={previousPage}>
           Previous
         </button>
-        <button type="submit" disabled={pristine || submitting}>
+        <button className="btn" type="submit" disabled={pristine || submitting}>
           Submit
         </button>
       </div>

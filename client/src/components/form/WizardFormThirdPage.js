@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
+import renderField from "./renderField";
 
 const WizardFormThirdPage = props => {
   const { handleSubmit, previousPage } = props;
@@ -9,14 +10,14 @@ const WizardFormThirdPage = props => {
       <div>
         <label>Notes</label>
         <div>
-          <Field name="message" component="textarea" placeholder="message" />
+          <Field name="message" component={renderField} placeholder="message" />
         </div>
       </div>
       <div>
-        <button type="button" className="previous" onClick={previousPage}>
+        <button type="button" className="previous btn" onClick={previousPage}>
           Previous
         </button>
-        <button type="submit" className="next">
+        <button type="submit" className="next btn">
           Next
         </button>
       </div>

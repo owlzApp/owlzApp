@@ -73,7 +73,7 @@ class WizardForm extends Component {
     const { page } = this.state;
     return (
       <div className="container">
-        <h1 className="center">Time to do your Adventure</h1>
+        <h3 className="center">Time to do your Adventure</h3>
         <ScrollAnimation animateIn="fadeInUp">
           <div className="form-box">
             <div className="row">

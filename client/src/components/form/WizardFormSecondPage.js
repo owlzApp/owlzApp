@@ -22,7 +22,7 @@ const renderColorSelector = ({ input, meta: { touched, error } }) => (
         </option>
       ))}
     </select>
-    {touched && error && <span>{error}</span>}
+    {touched && error && <span className="error-color">{error}</span>}
   </div>
 );
 
@@ -36,7 +36,7 @@ const renderPepoleSelector = ({ input, meta: { touched, error } }) => (
         </option>
       ))}
     </select>
-    {touched && error && <span>{error}</span>}
+    {touched && error && <span className="error-color">{error}</span>}
   </div>
 );
 
@@ -53,10 +53,10 @@ const WizardFormSecondPage = props => {
         <Field name="people" component={renderPepoleSelector} />
       </div>
       <div>
-        <button type="button" className="previous" onClick={previousPage}>
+        <button type="button" className="previous btn" onClick={previousPage}>
           Previous
         </button>
-        <button type="submit" className="next">
+        <button type="submit" className="next btn">
           Next
         </button>
       </div>

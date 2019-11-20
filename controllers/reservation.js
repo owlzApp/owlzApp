@@ -40,7 +40,7 @@ exports.send = function(req, res, next) {
     text: `Hey budy you have a reservation email: ${email} Message: ${message}`,
     html: templateEmail(req.body)
   };
-  sgMail.send(msg);
+  // sgMail.send(msg);
 
   reservation.save(function(error, reservation) {
     if (error) {

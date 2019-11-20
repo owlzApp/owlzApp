@@ -25,9 +25,10 @@
 }
 
 .react-tel-input .country-list {
-  margin: 10px  0 10px -150px;
+  margin: 10px 0 10px -203px;
+  width: 280px;
 }
 
-@media only screen and (max-width: 600px) {
-  
+.error-color{
+  color: red
 }

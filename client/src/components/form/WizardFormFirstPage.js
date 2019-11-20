@@ -28,7 +28,7 @@ const WizardFormFirstPage = props => {
       <div className="row">
         <div className="col m6 s12">
           <RenderFieldPhone phone={handleOnChange} value={value} />
-          <div>{errorPhone}</div>
+          <div className="error-color">{errorPhone}</div>
         </div>
         <div className="col m6 s12">
           <Field
@@ -40,7 +40,7 @@ const WizardFormFirstPage = props => {
         </div>
       </div>
       <div>
-        <button type="submit" className="next">
+        <button type="submit" className="next btn">
           Next
         </button>
       </div>
