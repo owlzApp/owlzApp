@@ -78,12 +78,12 @@ class WizardForm extends Component {
     const { page } = this.state;
     return (
       <div className="container-fluid">
-        <div className="row row-fluid">
+        <div className="row">
           <div className="col m6 col-fluid">
             <BoxImage />
           </div>
-          <div className="">{this.renderProgressBar()}</div>
-          <div className="col m6">
+          <div className="hello">{this.renderProgressBar()}</div>
+          <div className="col m6 s12">
             <div className="block-form">
               {page === 1 && (
                 <WizardFormFirstPage
