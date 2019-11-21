@@ -10,7 +10,7 @@ class Banner extends React.Component {
         <div className="container">
           <h1>Live the Owlz Adventure</h1>
           <p>Book and reserve your experiencies</p>
-          <ScrollAnimation animateIn="bounce infinite">
+          <ScrollAnimation animateIn="fadeIn">
             <Link to="/form" className="waves-effect waves-light btn">
               Book now
             </Link>

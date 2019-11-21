@@ -13,19 +13,39 @@ const WizardFormFourthPage = props => {
   } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <p>Your resumer before submit</p>
-      <p>{FinalValue.firstName}</p>
-      <p>{FinalValue.lastName}</p>
-      <p>{FinalValue.email}</p>
-      <p>{FinalValue.message}</p>
-      <p>{FinalValue.interest}</p>
-      <p>{FinalValue.people}</p>
-      <p>{Phone}</p>
-      <div>
-        <button type="button" className="previous btn" onClick={previousPage}>
+      <h6 className="center">Did You confirm your reservation?</h6>
+      <p>
+        <i className="fas fa-portrait"></i> {FinalValue.firstName}{" "}
+        {FinalValue.lastName}
+      </p>
+      <p>
+        <i className="fas fa-envelope"></i> {FinalValue.email}
+      </p>
+      <p>
+        <i className="far fa-comment-dots"></i> {FinalValue.message}
+      </p>
+      <p>
+        <i className="fas fa-running"></i> {FinalValue.interest}
+      </p>
+      <p>
+        <i className="fas fa-users"></i> {FinalValue.people}
+      </p>
+      <p>
+        <i className="fas fa-mobile-alt"></i> {Phone}
+      </p>
+      <div className="row">
+        <button
+          type="button"
+          className="previous btn left"
+          onClick={previousPage}
+        >
           Previous
         </button>
-        <button className="btn" type="submit" disabled={pristine || submitting}>
+        <button
+          className="btn sub right"
+          type="submit"
+          disabled={pristine || submitting}
+        >
           Submit
         </button>
       </div>

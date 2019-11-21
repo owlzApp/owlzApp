@@ -73,46 +73,46 @@ class WizardForm extends Component {
     const { page } = this.state;
     return (
       <div className="container">
-        <h3 className="center">Time to do your Adventure</h3>
+        <h4 className="center ">Make your Reservation</h4>
         <ScrollAnimation animateIn="fadeInUp">
           <div className="form-box">
             <div className="row">
-              <h4 className="center">Make your Reservation</h4>
               {this.renderProgressBar()}
-              {page === 1 && (
-                <WizardFormFirstPage
-                  onSubmit={this.nextPage}
-                  handleOnChange={this.handleOnChange}
-                  value={this.state.phone}
-                  errorPhone={this.state.errorPhone}
-                />
-              )}
-              {page === 2 && (
-                <WizardFormSecondPage
-                  previousPage={this.previousPage}
-                  onSubmit={this.nextPage}
-                />
-              )}
-              {page === 3 && (
-                <WizardFormThirdPage
-                  previousPage={this.previousPage}
-                  onSubmit={this.nextPage}
-                />
-              )}
-              {page === 4 && (
-                <WizardFormFourthPage
-                  previousPage={this.previousPage}
-                  onSubmit={this.onSubmit}
-                  FinalValue={this.state.finalValue}
-                  Phone={this.state.phone}
-                />
-              )}
+              <div className="block-form">
+                {page === 1 && (
+                  <WizardFormFirstPage
+                    onSubmit={this.nextPage}
+                    handleOnChange={this.handleOnChange}
+                    value={this.state.phone}
+                    errorPhone={this.state.errorPhone}
+                  />
+                )}
+                {page === 2 && (
+                  <WizardFormSecondPage
+                    previousPage={this.previousPage}
+                    onSubmit={this.nextPage}
+                  />
+                )}
+                {page === 3 && (
+                  <WizardFormThirdPage
+                    previousPage={this.previousPage}
+                    onSubmit={this.nextPage}
+                  />
+                )}
+                {page === 4 && (
+                  <WizardFormFourthPage
+                    previousPage={this.previousPage}
+                    onSubmit={this.onSubmit}
+                    FinalValue={this.state.finalValue}
+                    Phone={this.state.phone}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </ScrollAnimation>
-        <br></br>
-        <Link className="btn" to="/">
-          back
+        <Link className="btn right" to="/">
+          <i className="far fa-arrow-alt-circle-left"></i> Return home
         </Link>
       </div>
     );

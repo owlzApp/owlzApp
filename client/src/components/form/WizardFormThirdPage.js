@@ -14,12 +14,14 @@ const WizardFormThirdPage = props => {
         </div>
       </div>
       <div>
-        <button type="button" className="previous btn" onClick={previousPage}>
-          Previous
-        </button>
-        <button type="submit" className="next btn">
-          Next
-        </button>
+        <div className="row">
+          <button type="button" className="previous btn" onClick={previousPage}>
+            Previous
+          </button>
+          <button type="submit" className="next btn right">
+            Next
+          </button>
+        </div>
       </div>
     </form>
   );

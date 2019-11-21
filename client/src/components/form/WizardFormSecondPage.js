@@ -44,19 +44,25 @@ const WizardFormSecondPage = props => {
   const { handleSubmit, previousPage } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Principal Interest or Activity</label>
-        <Field name="interest" component={renderColorSelector} />
+      <div className="row">
+        <div className="col m6 s12">
+          <label>Principal Interest or Activity</label>
+          <Field name="interest" component={renderColorSelector} />
+        </div>
+        <div className="col m6 s12">
+          <label>How many people</label>
+          <Field name="people" component={renderPepoleSelector} />
+        </div>
       </div>
-      <div>
-        <label>How many people</label>
-        <Field name="people" component={renderPepoleSelector} />
-      </div>
-      <div>
-        <button type="button" className="previous btn" onClick={previousPage}>
+      <div className="row">
+        <button
+          type="button"
+          className="previous btn left"
+          onClick={previousPage}
+        >
           Previous
         </button>
-        <button type="submit" className="next btn">
+        <button type="submit" className="next btn right">
           Next
         </button>
       </div>

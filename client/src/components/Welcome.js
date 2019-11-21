@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import * as actions from "../components/actions";
 import Banner from "../components/utils/Banner";
 import "./css/Alert.css";
+import Concept from "./utils/Concept";
+import Footer from "./utils/Footer";
 
 class Welcome extends React.Component {
   state = {
@@ -17,12 +19,12 @@ class Welcome extends React.Component {
       return (
         <div className={`alert ${this.state.close}`}>
           <span>
-            <i className="far fa-check-circle"></i> {reservation.firstName}{" "}
-            {reservation.lastName}, your Request is on the way! Owlz team will
-            contact you on this number {reservation.phone}
             <b className="close-alert" onClick={this.closeAlert}>
               X
             </b>
+            <i className="far fa-check-circle"></i> {reservation.firstName}{" "}
+            {reservation.lastName}, your Request is on the way! Owlz team will
+            contact you on this number {reservation.phone}
           </span>
         </div>
       );
@@ -37,6 +39,8 @@ class Welcome extends React.Component {
       <div>
         {this.renderConfirmation(reservation)}
         <Banner />
+        <Concept />
+        <Footer />
       </div>
     );
   }

@@ -1,9 +1,14 @@
 .progressbar{
   display: flex;
+  height: 69px;
+  padding: 25px;
   margin-bottom: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .item {
+  background-color: #fff;
   align-items: center;
   text-align: center;
   width: 50px;

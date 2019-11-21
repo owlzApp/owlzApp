@@ -34,13 +34,13 @@ exports.send = function(req, res, next) {
   // Send Email
   sgMail.setApiKey(config.sendGrid);
   let msg = {
-    to: "iliyanastef@gmail.com",
+    to: "owlz.service@gmail.com",
     from: "owlz.service@gmail.com",
     subject: `You have new reservation from ${firstName} ${lastName}`,
     text: `Hey budy you have a reservation email: ${email} Message: ${message}`,
     html: templateEmail(req.body)
   };
-  sgMail.send(msg);
+  // sgMail.send(msg);
 
   reservation.save(function(error, reservation) {
     if (error) {
