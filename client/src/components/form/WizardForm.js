@@ -82,9 +82,8 @@ class WizardForm extends Component {
           <div className="col m6 col-fluid">
             <BoxImage />
           </div>
-
-          <div className="col m6 col-fluid">
-            <div className="form-box">{this.renderProgressBar()}</div>
+          <div className="">{this.renderProgressBar()}</div>
+          <div className="col m6">
             <div className="block-form">
               {page === 1 && (
                 <WizardFormFirstPage
@@ -116,12 +115,13 @@ class WizardForm extends Component {
                 />
               )}
             </div>
-
-            <Link className="btn right" to="/">
-              <i className="far fa-arrow-alt-circle-left"></i> Return home
-            </Link>
           </div>
         </div>
+        {/* <div className="row">
+          <Link className="btn right" to="/">
+            <i className="far fa-arrow-alt-circle-left"></i> Return home
+          </Link>
+        </div> */}
       </div>
     );
   }

@@ -8,9 +8,14 @@ const WizardFormThirdPage = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
-        <label>Notes</label>
-        <div>
-          <Field name="message" component={renderField} placeholder="message" />
+        <div className="col s12">
+          <Field
+            label="Message"
+            name="message"
+            type="text"
+            component={renderField}
+            placeholder="message"
+          />
         </div>
       </div>
       <div className="row">

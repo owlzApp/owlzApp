@@ -54,7 +54,7 @@ const WizardFormSecondPage = props => {
           <Field name="people" component={renderPepoleSelector} />
         </div>
       </div>
-      <div className="row">
+      <div>
         <button
           type="button"
           className="previous btn left"
