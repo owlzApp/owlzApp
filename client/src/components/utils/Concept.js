@@ -1,7 +1,6 @@
 import React from "react";
 import "../css/Concept.css";
 import { Link } from "react-router-dom";
-import ScrollAnimation from "react-animate-on-scroll";
 
 class Concept extends React.Component {
   render() {

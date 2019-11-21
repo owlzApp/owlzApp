@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
 import renderField from "./renderField";
 import RenderFieldPhone from "./renderFieldPhone";
+
 const WizardFormFirstPage = props => {
   const { handleSubmit, handleOnChange, value, errorPhone } = props;
   return (

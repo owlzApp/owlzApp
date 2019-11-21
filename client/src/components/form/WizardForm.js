@@ -8,8 +8,8 @@ import "../css/formReservation.css";
 import "../css/ProgressBar.css";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import ScrollAnimation from "react-animate-on-scroll";
 import { Link } from "react-router-dom";
+import BoxImage from "../boxImage/BoxImage";
 
 class WizardForm extends Component {
   constructor(props) {
@@ -32,7 +32,12 @@ class WizardForm extends Component {
   renderProgressBar = () => {
     switch (this.state.page) {
       case 1:
-        return <ProgressBar progress={this.state.color} />;
+        return (
+          <ProgressBar
+            progress={this.state.color}
+            animation={this.state.animation}
+          />
+        );
       case 2:
         return <ProgressBar progress2={this.state.color} />;
       default:
@@ -72,48 +77,51 @@ class WizardForm extends Component {
   render() {
     const { page } = this.state;
     return (
-      <div className="container">
-        <h4 className="center ">Make your Reservation</h4>
-        <ScrollAnimation animateIn="fadeInUp">
-          <div className="form-box">
-            <div className="row">
-              {this.renderProgressBar()}
-              <div className="block-form">
-                {page === 1 && (
-                  <WizardFormFirstPage
-                    onSubmit={this.nextPage}
-                    handleOnChange={this.handleOnChange}
-                    value={this.state.phone}
-                    errorPhone={this.state.errorPhone}
-                  />
-                )}
-                {page === 2 && (
-                  <WizardFormSecondPage
-                    previousPage={this.previousPage}
-                    onSubmit={this.nextPage}
-                  />
-                )}
-                {page === 3 && (
-                  <WizardFormThirdPage
-                    previousPage={this.previousPage}
-                    onSubmit={this.nextPage}
-                  />
-                )}
-                {page === 4 && (
-                  <WizardFormFourthPage
-                    previousPage={this.previousPage}
-                    onSubmit={this.onSubmit}
-                    FinalValue={this.state.finalValue}
-                    Phone={this.state.phone}
-                  />
-                )}
-              </div>
-            </div>
+      <div className="container-fluid">
+        <div className="row row-fluid">
+          <div className="col m6 col-fluid">
+            <BoxImage />
           </div>
-        </ScrollAnimation>
-        <Link className="btn right" to="/">
-          <i className="far fa-arrow-alt-circle-left"></i> Return home
-        </Link>
+
+          <div className="col m6 col-fluid">
+            <div className="form-box">{this.renderProgressBar()}</div>
+            <div className="block-form">
+              {page === 1 && (
+                <WizardFormFirstPage
+                  onSubmit={this.nextPage}
+                  handleOnChange={this.handleOnChange}
+                  value={this.state.phone}
+                  errorPhone={this.state.errorPhone}
+                />
+              )}
+              {page === 2 && (
+                <WizardFormSecondPage
+                  previousPage={this.previousPage}
+                  onSubmit={this.nextPage}
+                />
+              )}
+
+              {page === 3 && (
+                <WizardFormThirdPage
+                  previousPage={this.previousPage}
+                  onSubmit={this.nextPage}
+                />
+              )}
+              {page === 4 && (
+                <WizardFormFourthPage
+                  previousPage={this.previousPage}
+                  onSubmit={this.onSubmit}
+                  FinalValue={this.state.finalValue}
+                  Phone={this.state.phone}
+                />
+              )}
+            </div>
+
+            <Link className="btn right" to="/">
+              <i className="far fa-arrow-alt-circle-left"></i> Return home
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

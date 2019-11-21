@@ -24,6 +24,11 @@ body{
   border: 2px solid #fff;
 }
 
+.btn{
+  background-color: black !important;
+  color: #d4af37 !important;
+}
+
 select{
   display: block !important;
 }
