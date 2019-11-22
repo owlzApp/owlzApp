@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/BoxImage.css";
-import ScrollAnimation from "react-animate-on-scroll";
 
 class BoxImage extends React.Component {
   render() {

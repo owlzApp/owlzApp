@@ -41,7 +41,7 @@ const WizardFormFirstPage = props => {
         </div>
       </div>
       <div>
-        <button type="submit" className="next btn">
+        <button type="submit" className="next btn right">
           Next
         </button>
       </div>

@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import { Link } from "react-router-dom";
 import BoxImage from "../boxImage/BoxImage";
+import ScrollAnimation from "react-animate-on-scroll";
 
 class WizardForm extends Component {
   constructor(props) {
@@ -78,50 +79,58 @@ class WizardForm extends Component {
     const { page } = this.state;
     return (
       <div className="container-fluid">
-        <div className="row">
+        <div className="row row-fluid">
           <div className="col m6 col-fluid">
             <BoxImage />
           </div>
-          <div className="hello">{this.renderProgressBar()}</div>
           <div className="col m6 s12">
             <div className="block-form">
+              <div>{this.renderProgressBar()}</div>
               {page === 1 && (
-                <WizardFormFirstPage
-                  onSubmit={this.nextPage}
-                  handleOnChange={this.handleOnChange}
-                  value={this.state.phone}
-                  errorPhone={this.state.errorPhone}
-                />
+                <ScrollAnimation animateIn="slideInRight">
+                  <WizardFormFirstPage
+                    onSubmit={this.nextPage}
+                    handleOnChange={this.handleOnChange}
+                    value={this.state.phone}
+                    errorPhone={this.state.errorPhone}
+                  />
+                </ScrollAnimation>
               )}
               {page === 2 && (
-                <WizardFormSecondPage
-                  previousPage={this.previousPage}
-                  onSubmit={this.nextPage}
-                />
+                <ScrollAnimation animateIn="slideInRight">
+                  <WizardFormSecondPage
+                    previousPage={this.previousPage}
+                    onSubmit={this.nextPage}
+                  />
+                </ScrollAnimation>
               )}
 
               {page === 3 && (
-                <WizardFormThirdPage
-                  previousPage={this.previousPage}
-                  onSubmit={this.nextPage}
-                />
+                <ScrollAnimation animateIn="slideInRight">
+                  <WizardFormThirdPage
+                    previousPage={this.previousPage}
+                    onSubmit={this.nextPage}
+                  />
+                </ScrollAnimation>
               )}
               {page === 4 && (
-                <WizardFormFourthPage
-                  previousPage={this.previousPage}
-                  onSubmit={this.onSubmit}
-                  FinalValue={this.state.finalValue}
-                  Phone={this.state.phone}
-                />
+                <ScrollAnimation animateIn="slideInRight">
+                  <WizardFormFourthPage
+                    previousPage={this.previousPage}
+                    onSubmit={this.onSubmit}
+                    FinalValue={this.state.finalValue}
+                    Phone={this.state.phone}
+                  />
+                </ScrollAnimation>
               )}
             </div>
           </div>
+          <div>
+            <Link className="btn back-home right" to="/">
+              <i className="far fa-arrow-alt-circle-left"></i> Return home
+            </Link>
+          </div>
         </div>
-        {/* <div className="row">
-          <Link className="btn right" to="/">
-            <i className="far fa-arrow-alt-circle-left"></i> Return home
-          </Link>
-        </div> */}
       </div>
     );
   }
