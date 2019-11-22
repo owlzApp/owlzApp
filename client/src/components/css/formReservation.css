@@ -43,9 +43,13 @@
   margin-top: 30px;
 }
 
+label {
+  color:  #d4af37 !important;
+}
 input:focus:not([readonly]){
   border-bottom: 1px solid #d4af37 !important;
   box-shadow: 0 1px 0 0 #d4af37 !important;
+  color:  #d4af37 !important;
 }
 .next,.previous,.sub{
   margin-top: 20px;
