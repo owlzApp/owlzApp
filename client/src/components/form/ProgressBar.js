@@ -12,7 +12,7 @@ const ProgressBar = props => {
       </div>
       <div className={`item ${progress2}`}>
         <p>
-          <i className="fas fa-running"></i>
+          <i className="fas fa-cocktail"></i>
         </p>
       </div>
       <div className={`item ${progress3}`}>

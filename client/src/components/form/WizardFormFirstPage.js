@@ -28,16 +28,16 @@ const WizardFormFirstPage = props => {
       </div>
       <div className="row">
         <div className="col m6 s12">
-          <RenderFieldPhone phone={handleOnChange} value={value} />
-          <div className="error-color">{errorPhone}</div>
-        </div>
-        <div className="col m6 s12">
           <Field
             name="email"
             type="email"
             component={renderField}
             label="Email"
           />
+        </div>
+        <div className="col m6 s12">
+          <RenderFieldPhone phone={handleOnChange} value={value} />
+          <div className="error-color">{errorPhone}</div>
         </div>
       </div>
       <div>

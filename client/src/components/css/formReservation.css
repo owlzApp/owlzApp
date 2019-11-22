@@ -19,7 +19,7 @@
 
 .block-form{
   padding: 30px;
-  margin-top: 15%;
+  margin-top: 5%;
 }
 .react-tel-input .flag-dropdown {
   right: 0;
@@ -56,8 +56,27 @@ input:focus:not([readonly]){
   margin-right: 10px;;
 }
 
+.reservation{
+ margin-top: 40px;
+}
+
+.reservation .fas, .reservation .far{
+  color:#d4af37;
+  font-size: 20px;
+  margin-right: 15px;
+  width: 30px;
+ }
+
+ .reservation p {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
 @media only screen and (max-width: 600px) {
   .block-form {
     margin-top: 0%;
+}
+input, .react-tel-input{
+  margin-bottom: 30px !important;
+
 }
 }

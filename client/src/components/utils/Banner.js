@@ -8,9 +8,11 @@ class Banner extends React.Component {
     return (
       <div className="banner">
         <div className="container">
-          <h1>Live the Owlz Adventure</h1>
-          <p>Book and reserve your experiencies</p>
-          <ScrollAnimation animateIn="fadeIn">
+          <ScrollAnimation animateIn="slideInRight">
+            <h1>Live the Owlz Adventure</h1>
+            <p>Book and reserve your experiencies</p>
+          </ScrollAnimation>
+          <ScrollAnimation animateIn="zoomIn">
             <Link to="/form" className="waves-effect waves-light btn">
               Book now
             </Link>

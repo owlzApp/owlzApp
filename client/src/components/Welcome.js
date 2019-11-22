@@ -20,7 +20,7 @@ class Welcome extends React.Component {
         <div className={`alert ${this.state.close}`}>
           <span>
             <b className="close-alert" onClick={this.closeAlert}>
-              X
+              <i className="far fa-times-circle"></i>
             </b>
             <i className="far fa-check-circle"></i> {reservation.firstName}{" "}
             {reservation.lastName}, your Request is on the way! Owlz team will
@@ -34,7 +34,6 @@ class Welcome extends React.Component {
   };
   render() {
     const { reservation } = this.props;
-    console.log(reservation);
     return (
       <div>
         {this.renderConfirmation(reservation)}
@@ -47,7 +46,6 @@ class Welcome extends React.Component {
 }
 
 function mapStateToPros(state) {
-  console.log(state);
   return {
     authenticated: state.auth.authenticated,
     reservation: state.reservations.reservationSend

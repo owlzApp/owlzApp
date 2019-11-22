@@ -16,7 +16,6 @@ import WizardForm from "./form/WizardForm";
 class App extends React.Component {
   componentDidMount() {
     this.props.fetchUser();
-    console.log(this.props);
   }
 
   render() {

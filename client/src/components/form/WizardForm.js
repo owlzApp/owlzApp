@@ -9,7 +9,7 @@ import "../css/ProgressBar.css";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import { Link } from "react-router-dom";
-import BoxImage from "../boxImage/BoxImage";
+import BoxImage from "../utils/BoxImage";
 import ScrollAnimation from "react-animate-on-scroll";
 
 class WizardForm extends Component {
