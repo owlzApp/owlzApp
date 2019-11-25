@@ -11,6 +11,7 @@ import * as actions from "../actions";
 import { Link } from "react-router-dom";
 import BoxImage from "../utils/BoxImage";
 import ScrollAnimation from "react-animate-on-scroll";
+import M from "materialize-css/dist/js/materialize.min.js";
 
 class WizardForm extends Component {
   constructor(props) {
@@ -24,6 +25,10 @@ class WizardForm extends Component {
       errorPhone: "",
       finalValue: []
     };
+  }
+  UNSAFE_componentDidMount() {
+    var elems = document.querySelectorAll(".datepicker");
+    M.Datepicker.init(elems, {});
   }
 
   handleOnChange = value => {
@@ -45,14 +50,10 @@ class WizardForm extends Component {
         return <ProgressBar progress3={this.state.color} />;
     }
   };
+
   nextPage(form) {
     this.setState({ finalValue: form });
-    if (this.state.phone !== "" && this.state.phone !== "+") {
-      this.setState({ page: this.state.page + 1 });
-      this.setState({ errorPhone: "" });
-    } else {
-      this.setState({ errorPhone: "phone must be required" });
-    }
+    this.setState({ page: this.state.page + 1 });
   }
 
   previousPage() {
@@ -60,17 +61,8 @@ class WizardForm extends Component {
   }
 
   onSubmit = form => {
-    const finalForm = {
-      firstName: form.firstName,
-      lastName: form.lastName,
-      email: form.email,
-      phone: this.state.phone,
-      interest: form.interest,
-      people: form.people,
-      message: form.message
-    };
-    console.log(finalForm);
-    this.props.sendReservation(finalForm, () => {
+    console.log(form);
+    this.props.sendReservation(form, () => {
       this.props.history.push(`/`);
     });
   };
@@ -88,12 +80,7 @@ class WizardForm extends Component {
               <div>{this.renderProgressBar()}</div>
               {page === 1 && (
                 <ScrollAnimation animateIn="slideInRight">
-                  <WizardFormFirstPage
-                    onSubmit={this.nextPage}
-                    handleOnChange={this.handleOnChange}
-                    value={this.state.phone}
-                    errorPhone={this.state.errorPhone}
-                  />
+                  <WizardFormFirstPage onSubmit={this.nextPage} />
                 </ScrollAnimation>
               )}
               {page === 2 && (
@@ -110,6 +97,9 @@ class WizardForm extends Component {
                   <WizardFormThirdPage
                     previousPage={this.previousPage}
                     onSubmit={this.nextPage}
+                    handleOnChange={this.handleOnChange}
+                    value={this.state.phone}
+                    errorPhone={this.state.errorPhone}
                   />
                 </ScrollAnimation>
               )}
@@ -119,7 +109,6 @@ class WizardForm extends Component {
                     previousPage={this.previousPage}
                     onSubmit={this.onSubmit}
                     FinalValue={this.state.finalValue}
-                    Phone={this.state.phone}
                   />
                 </ScrollAnimation>
               )}

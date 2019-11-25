@@ -7,7 +7,7 @@ const ProgressBar = props => {
     <div className="progressbar">
       <div className={`item ${progress}`}>
         <p>
-          <i className="far fa-address-card"></i>
+          <i className="fas fa-map-marked-alt"></i>
         </p>
       </div>
       <div className={`item ${progress2}`}>
@@ -17,7 +17,7 @@ const ProgressBar = props => {
       </div>
       <div className={`item ${progress3}`}>
         <p>
-          <i className="fas fa-comment-dots"></i>
+          <i className="far fa-address-card"></i>
         </p>
       </div>
     </div>

@@ -47,7 +47,6 @@
   background: none !important;
   box-shadow: none !important;
   cursor: pointer;
-
 }
 
 label {
@@ -58,10 +57,33 @@ input:focus:not([readonly]){
   box-shadow: 0 1px 0 0 #d4af37 !important;
   color:  #d4af37 !important;
 }
+
+.rw-widget-container {
+  border: none !important;
+}
+
+.rw-select-bordered {
+  border-left: none !important;
+}
+
+button:focus {
+  outline: none;
+  background-color: #d4af37 !important;
+}
+
+.rw-select-bordered:hover, .rw-select-bordered:active {
+  background-color: #d4af37 !important;
+}
+
+.rw-state-focus>.rw-widget-container{
+  box-shadow: none !important;
+}
+
 .next,.previous,.sub{
   margin-top: 20px;
   margin-right: 10px;;
 }
+
 
 .reservation{
  margin-top: 40px;

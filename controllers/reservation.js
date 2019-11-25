@@ -11,10 +11,13 @@ exports.send = function(req, res, next) {
   const phone = req.body.phone;
   const people = req.body.people;
   const interest = req.body.interest;
+  const gender = req.body.gender;
+  const date = req.body.date;
+  const city = req.body.city;
 
   console.log(req.body);
 
-  if (!email || !firstName) {
+  if (!phone || !firstName) {
     return res
       .status(422)
       .send({ error: "You must provide email and firstname and phone" });
@@ -28,7 +31,10 @@ exports.send = function(req, res, next) {
     message: message,
     phone: phone,
     people: people,
-    interest: interest
+    interest: interest,
+    gender: gender,
+    date: date,
+    city: city
   });
 
   // Send Email

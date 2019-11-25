@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 // Define our model
 const reservationSchema = new Schema({
+  city: String,
+  date: String,
+  gender: String,
   email: String,
   lastName: String,
   firstName: String,

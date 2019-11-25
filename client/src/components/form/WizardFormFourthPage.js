@@ -8,8 +8,7 @@ const WizardFormFourthPage = props => {
     pristine,
     previousPage,
     submitting,
-    FinalValue,
-    Phone
+    FinalValue
   } = props;
   return (
     <form onSubmit={handleSubmit}>
@@ -32,7 +31,7 @@ const WizardFormFourthPage = props => {
           <i className="fas fa-users"></i> {FinalValue.people}
         </p>
         <p>
-          <i className="fas fa-mobile-alt"></i> {Phone}
+          <i className="fas fa-mobile-alt"></i> {FinalValue.phone}
         </p>
         <div className="row">
           <button

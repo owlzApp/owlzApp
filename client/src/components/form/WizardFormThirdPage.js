@@ -2,19 +2,46 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
 import renderField from "./renderField";
+import RenderFieldPhone from "./renderFieldPhone";
 
 const WizardFormThirdPage = props => {
-  const { handleSubmit, previousPage } = props;
+  const { handleSubmit, previousPage, handleOnChange, value } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
-        <div className="col s12">
+        <div className="col m6 s12">
           <Field
-            label="Message"
-            name="message"
+            name="firstName"
             type="text"
             component={renderField}
-            placeholder="message"
+            label="First Name"
+          />
+        </div>
+        <div className="col m6 s12">
+          <Field
+            name="lastName"
+            type="text"
+            component={renderField}
+            label="Last Name"
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col m6 s12">
+          <Field
+            name="email"
+            type="email"
+            component={renderField}
+            label="Email"
+          />
+        </div>
+        <div className="col m6 s12">
+          <Field
+            name="phone"
+            label="Phone"
+            phone={handleOnChange}
+            value={value}
+            component={RenderFieldPhone}
           />
         </div>
       </div>

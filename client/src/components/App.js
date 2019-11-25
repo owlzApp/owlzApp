@@ -17,7 +17,7 @@ import About from "./About";
 import Faq from "./Faq";
 
 class App extends React.Component {
-  componentDidMount() {
+  UNSAFE_componentDidMount() {
     this.props.fetchUser();
   }
 

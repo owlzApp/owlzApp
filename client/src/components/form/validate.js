@@ -12,10 +12,8 @@ const validate = values => {
     errors.email = "Invalid email address";
   }
 
-  if (!values.phone) {
+  if (!values.phone || values.phone === "+" || values.phone === "+1") {
     errors.phone = "Required";
-  } else if (!/^(0|[1-9][0-9]{9})$/i.test(values.phone)) {
-    errors.phone = "Invalid phone number, must be 10 digits";
   }
 
   if (!values.interest) {
@@ -28,6 +26,20 @@ const validate = values => {
 
   if (!values.message) {
     errors.message = "Required";
+  }
+  if (!values.date) {
+    errors.date = "Required select one date";
+  }
+
+  if (!values.time) {
+    errors.time = "Required select one hour";
+  }
+
+  if (!values.city) {
+    errors.city = "Required";
+  }
+  if (!values.gender) {
+    errors.gender = "Required";
   }
   return errors;
 };
