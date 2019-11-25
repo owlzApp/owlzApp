@@ -5,6 +5,8 @@ import Banner from "../components/utils/Banner";
 import "./css/Alert.css";
 import Concept from "./utils/Concept";
 import Footer from "./utils/Footer";
+import Partner from "./utils/Partner";
+import Review from "./utils/Review";
 
 class Welcome extends React.Component {
   state = {
@@ -38,7 +40,9 @@ class Welcome extends React.Component {
       <div>
         {this.renderConfirmation(reservation)}
         <Banner />
+        <Partner />
         <Concept />
+        <Review />
         <Footer />
       </div>
     );

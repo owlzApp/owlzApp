@@ -12,6 +12,7 @@ import UserShow from "./user/UserShow";
 import UserEdit from "./user/UserEdit";
 import Signup from "./auth/Signup";
 import WizardForm from "./form/WizardForm";
+import Header from "./utils/Header";
 
 class App extends React.Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends React.Component {
     return (
       <div>
         <BrowserRouter>
+          <Header />
           <Route exact path="/" component={Welcome} />
           <Route path="/signout" component={Signout} />
           <Route path="/signin" component={Signin} />

@@ -1,0 +1,25 @@
+.Review{
+  padding-top: 40px;
+  background-color: black;
+  color: #fff;
+}
+
+.Review hr{
+  display: block;
+  width: 250px;
+  border: 1px solid #d4af37 ;
+}
+
+.Review p {
+  color: white;
+  opacity: .7 !important;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.fa-star{
+  color: #d4af37;
+}
+
+.Review .carousel{
+  height: 200px;
+}

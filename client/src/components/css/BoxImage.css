@@ -1,6 +1,9 @@
 .box-image img{
   width: 100%;
 }
+.banner-form {
+  display: flex;
+}
 
 .banner-form img {
   max-width: 100%;

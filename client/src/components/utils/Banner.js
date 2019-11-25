@@ -7,14 +7,22 @@ class Banner extends React.Component {
   render() {
     return (
       <div className="banner">
-        <div className="container">
+        <div className="container center">
           <ScrollAnimation animateIn="slideInRight">
-            <h1>Live the Owlz Adventure</h1>
-            <p>Book and reserve your experiencies</p>
+            <h1>Personal all in one consierge</h1>
+            <p>
+              CONNECT - Connect with a VIP Liaison in the city you are traveling
+              to.
+            </p>
+            <p>BOOK - Create personalized itenerary for a perfect trip</p>
+            <p>
+              EXPERENCE - Experience the city as an insider (with a point of
+              contact overseeing stay)
+            </p>
           </ScrollAnimation>
           <ScrollAnimation animateIn="zoomIn">
             <Link to="/form" className="waves-effect waves-light btn">
-              Book now
+              LEARN MORE
             </Link>
           </ScrollAnimation>
         </div>

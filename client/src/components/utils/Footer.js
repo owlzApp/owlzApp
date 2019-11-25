@@ -27,12 +27,25 @@ class Footer extends React.Component {
                     <i className="fab fa-instagram"></i> Instagram
                   </a>
                 </li>
+                <li>
+                  <a className="text-lighten-3" href="#!">
+                    <i className="fas fa-file-contract"></i> Terms and
+                    Conditions
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
         </div>
         <div className="footer-copyright">
           <div className="container">© 2019 Copyright Owlz</div>
+          <div className="right">
+            <img
+              src={process.env.PUBLIC_URL + "/images/secure.png"}
+              className="secure"
+              alt="secure"
+            />
+          </div>
         </div>
       </footer>
     );
