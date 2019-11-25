@@ -13,6 +13,8 @@ import UserEdit from "./user/UserEdit";
 import Signup from "./auth/Signup";
 import WizardForm from "./form/WizardForm";
 import Header from "./utils/Header";
+import About from "./About";
+import Faq from "./Faq";
 
 class App extends React.Component {
   componentDidMount() {
@@ -29,6 +31,8 @@ class App extends React.Component {
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
           <Route path="/form" component={WizardForm} />
+          <Route path="/about" component={About} />
+          <Route path="/faq" component={Faq} />
 
           {this.props.authenticated ? (
             <div>
