@@ -26,9 +26,12 @@ class WizardForm extends Component {
       finalValue: []
     };
   }
-  UNSAFE_componentDidMount() {
-    var elems = document.querySelectorAll(".datepicker");
+  componentDidMount() {
+    const elems = document.querySelectorAll(".datepicker");
     M.Datepicker.init(elems, {});
+
+    const elemCollapsible = document.querySelectorAll(".collapsible");
+    M.Collapsible.init(elemCollapsible, {});
   }
 
   handleOnChange = value => {

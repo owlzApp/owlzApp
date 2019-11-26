@@ -33,6 +33,7 @@ const WizardFormFourthPage = props => {
         <p>
           <i className="fas fa-mobile-alt"></i> {FinalValue.phone}
         </p>
+
         <div className="row">
           <button
             type="button"

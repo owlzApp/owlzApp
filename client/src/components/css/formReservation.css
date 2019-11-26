@@ -79,11 +79,39 @@ button:focus {
   box-shadow: none !important;
 }
 
-.next,.previous,.sub{
-  margin-top: 20px;
-  margin-right: 10px;;
+
+.collapsible {
+  border-top: none; 
+  border-right: none; 
+  border-left: none;
+  border-radius: 5px !important;
+  margin: .5rem 0 1rem 0;
 }
 
+.collapsible-header {
+  height: 42px;
+}
+
+select {
+  margin-top: 9px !important;
+}
+
+.collapsible-header {
+  display: flex;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  padding: 12px;
+  background-color: transparent !important;
+  border-bottom: none !important;
+  border-radius: none !important;
+}
+
+.collapsible {
+  border-bottom: 1px solid #ddd !important;
+  box-shadow: none !important;
+
+}
 
 .reservation{
  margin-top: 40px;
