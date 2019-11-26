@@ -7,6 +7,7 @@ import DateTimePicker from "react-widgets/lib/DateTimePicker";
 import moment from "moment";
 import momentLocalizer from "react-widgets-moment";
 import "react-widgets/dist/css/react-widgets.css";
+
 momentLocalizer(moment);
 
 const renderDateTime = ({
@@ -18,8 +19,8 @@ const renderDateTime = ({
     <label>{label}</label>
     <DateTimePicker
       date={false}
-      min={new Date()}
       onChange={onChange}
+      step={30}
       placeholder="Click on the Lock"
     />
     {touched && error && <span className="error-color">{error}</span>}

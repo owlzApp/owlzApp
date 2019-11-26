@@ -34,6 +34,13 @@ const validate = values => {
   if (!values.time) {
     errors.time = "Required select one hour";
   }
+  if (!values.timeCall) {
+    errors.timeCall = "Select one hour to be call";
+  }
+
+  if (!values.dateCall) {
+    errors.dateCall = "Select one date to be call";
+  }
 
   if (!values.city) {
     errors.city = "Required";
