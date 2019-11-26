@@ -23,6 +23,9 @@ class WizardForm extends Component {
       color: "item-active",
       phone: "",
       errorPhone: "",
+      countFemale: 0,
+      countMale: 0,
+      CountTotal: 0,
       finalValue: []
     };
   }
@@ -36,6 +39,16 @@ class WizardForm extends Component {
 
   handleOnChange = value => {
     this.setState({ phone: value });
+  };
+
+  handleOnChangeCountFemale = value => {
+    this.setState({ countFemale: value });
+    this.setState({ CountTotal: this.state.countMale + value });
+  };
+
+  handleOnChangeCountMale = value => {
+    this.setState({ countMale: value });
+    this.setState({ CountTotal: this.state.countFemale + value });
   };
 
   renderProgressBar = () => {
@@ -57,6 +70,7 @@ class WizardForm extends Component {
   nextPage(form) {
     this.setState({ finalValue: form });
     this.setState({ page: this.state.page + 1 });
+    console.log(this.state.CountTotal);
   }
 
   previousPage() {
@@ -83,7 +97,12 @@ class WizardForm extends Component {
               <div>{this.renderProgressBar()}</div>
               {page === 1 && (
                 <ScrollAnimation animateIn="slideInRight">
-                  <WizardFormFirstPage onSubmit={this.nextPage} />
+                  <WizardFormFirstPage
+                    onSubmit={this.nextPage}
+                    handleOnChangeFemale={this.handleOnChangeCountFemale}
+                    handleOnChangeMale={this.handleOnChangeCountMale}
+                    value={this.state.CountTotal}
+                  />
                 </ScrollAnimation>
               )}
               {page === 2 && (

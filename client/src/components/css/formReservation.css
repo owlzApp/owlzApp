@@ -92,6 +92,23 @@ button:focus {
   height: 42px;
 }
 
+.collapsible-header span{
+  margin-top: 3px;
+  margin-left: -14px;
+}
+.collapsible input[type=text]:not(.browser-default), .collapsible input:focus:not([readonly]){
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.collapsible b{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50px !important;
+    border-color: #d4af37 !important;
+    background: #d4af37 !important;
+}
+
 select {
   margin-top: 9px !important;
 }
