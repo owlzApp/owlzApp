@@ -8,7 +8,7 @@ class Banner extends React.Component {
     return (
       <div className="banner">
         <div className="container center">
-          <ScrollAnimation animateIn="slideInRight">
+          <ScrollAnimation animateOnce={true} animateIn="slideInRight">
             <h1>Personal all in one consierge</h1>
             <p>
               CONNECT - Connect with a VIP Liaison in the city you are traveling
@@ -20,7 +20,7 @@ class Banner extends React.Component {
               contact overseeing stay)
             </p>
           </ScrollAnimation>
-          <ScrollAnimation animateIn="zoomIn">
+          <ScrollAnimation animateOnce={true} animateIn="zoomIn">
             <Link to="/form" className="waves-effect waves-light btn">
               LEARN MORE
             </Link>

@@ -18,7 +18,7 @@
 }
 
 .block-form{
-  padding: 30px;
+  padding: 20px;
   margin-top: 5%;
 }
 .react-tel-input .flag-dropdown {
@@ -43,7 +43,6 @@
   display: block;
   margin-left: auto;
   margin-right: 40px;
-  margin-top: 20px;
   background: none !important;
   box-shadow: none !important;
   cursor: pointer;
@@ -79,21 +78,35 @@ button:focus {
   box-shadow: none !important;
 }
 
-
 .collapsible {
   border-top: none; 
   border-right: none; 
   border-left: none;
+  border-bottom: 1px solid #ddd !important;
+  box-shadow: none !important;
   border-radius: 5px !important;
   margin: .5rem 0 1rem 0;
 }
 
+
 .collapsible-header {
+  display: flex;
   height: 42px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  padding: 12px;
+  background-color: transparent !important;
+  border-bottom: none !important;
+  border-radius: none !important;
+}
+
+.collapsible-header i {
+  margin-top: -5px;
 }
 
 .collapsible-header span{
-  margin-top: 3px;
+  margin-top: -1px;
   margin-left: -14px;
 }
 .collapsible input[type=text]:not(.browser-default), .collapsible input:focus:not([readonly]){
@@ -113,25 +126,9 @@ select {
   margin-top: 9px !important;
 }
 
-.collapsible-header {
-  display: flex;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  line-height: 1.5;
-  padding: 12px;
-  background-color: transparent !important;
-  border-bottom: none !important;
-  border-radius: none !important;
-}
-
-.collapsible {
-  border-bottom: 1px solid #ddd !important;
-  box-shadow: none !important;
-
-}
-
 .reservation{
  margin-top: 40px;
+ margin-bottom: 40px;
 }
 
 .reservation .fas, .reservation .far{
@@ -139,6 +136,18 @@ select {
   font-size: 20px;
   margin-right: 15px;
   width: 30px;
+ }
+
+ .reservation hr {
+    width: 156px;
+    display: block;
+    margin-left: 0;
+    border: 1px solid #d4af37 ;
+
+ }
+
+ .fix-click{
+  touch-action: manipulation;
  }
 
  .reservation p {

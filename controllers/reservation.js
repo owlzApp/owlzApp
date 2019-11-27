@@ -9,10 +9,14 @@ exports.send = function(req, res, next) {
   const lastName = req.body.lastName;
   const message = req.body.message;
   const phone = req.body.phone;
-  const people = req.body.people;
   const interest = req.body.interest;
-  const gender = req.body.gender;
   const date = req.body.date;
+  const dateEnd = req.body.dateEnd;
+  const dateCall = req.body.dateCall;
+  const timeCall = req.body.timeCall;
+  const peopleFemale = req.body.peopleFemale;
+  const peopleMale = req.body.peopleMale;
+  const people = req.body.people;
   const city = req.body.city;
 
   console.log(req.body);
@@ -28,13 +32,17 @@ exports.send = function(req, res, next) {
     email: email,
     firstName: firstName,
     lastName: lastName,
-    message: message,
     phone: phone,
-    people: people,
     interest: interest,
-    gender: gender,
+    city: city,
     date: date,
-    city: city
+    dateEnd: dateEnd,
+    people: people,
+    peopleFemale: peopleFemale,
+    peopleMale: peopleMale,
+    message: message,
+    dateCall: dateCall,
+    timeCall: timeCall
   });
 
   // Send Email
@@ -46,7 +54,7 @@ exports.send = function(req, res, next) {
     text: `Hey budy you have a reservation email: ${email} Message: ${message}`,
     html: templateEmail(req.body)
   };
-  // sgMail.send(msg);
+  sgMail.send(msg);
 
   reservation.save(function(error, reservation) {
     if (error) {

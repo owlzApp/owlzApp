@@ -26,7 +26,8 @@ class Welcome extends React.Component {
             </b>
             <i className="far fa-check-circle"></i> {reservation.firstName}{" "}
             {reservation.lastName}, your Request is on the way! Owlz team will
-            contact you on this number {reservation.phone}
+            contact you on this number {reservation.phone} around{" "}
+            {reservation.timeCall} on the {reservation.dateCall}.
           </span>
         </div>
       );
@@ -36,6 +37,7 @@ class Welcome extends React.Component {
   };
   render() {
     const { reservation } = this.props;
+    console.log(reservation);
     return (
       <div>
         {this.renderConfirmation(reservation)}

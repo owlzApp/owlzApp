@@ -8,7 +8,7 @@ class Concept extends React.Component {
     return (
       <div className="Concept">
         <div className="container">
-          <ScrollAnimation animateIn="slideInUp">
+          <ScrollAnimation animateOnce={true} animateIn="slideInUp">
             <h3 className="center">Concept</h3>
             <hr></hr>
             <p className="center">
@@ -17,7 +17,11 @@ class Concept extends React.Component {
           </ScrollAnimation>
           <div className="row center block-concept">
             <div className="col m4 s12">
-              <ScrollAnimation animateIn="slideInRight" delay={600}>
+              <ScrollAnimation
+                animateOnce={true}
+                animateIn="slideInRight"
+                delay={600}
+              >
                 <div className="circle-icon">
                   <i className="fas fa-hands-helping"></i>
                 </div>
@@ -28,7 +32,11 @@ class Concept extends React.Component {
               </ScrollAnimation>
             </div>
             <div className="col m4 s12">
-              <ScrollAnimation animateIn="slideInDown" delay={600}>
+              <ScrollAnimation
+                animateOnce={true}
+                animateIn="slideInDown"
+                delay={600}
+              >
                 <div className="circle-icon">
                   <i className="fas fa-file-signature"></i>
                 </div>
@@ -40,7 +48,11 @@ class Concept extends React.Component {
               </ScrollAnimation>
             </div>
             <div className="col m4 s12">
-              <ScrollAnimation animateIn="slideInLeft" delay={600}>
+              <ScrollAnimation
+                animateOnce={true}
+                animateIn="slideInLeft"
+                delay={600}
+              >
                 <div className="circle-icon">
                   <i className="fas fa-thumbs-up"></i>
                 </div>
@@ -52,7 +64,11 @@ class Concept extends React.Component {
               </ScrollAnimation>
             </div>
           </div>
-          <ScrollAnimation animateIn="slideInUp" delay={1200}>
+          <ScrollAnimation
+            animateOnce={true}
+            animateIn="slideInUp"
+            delay={1200}
+          >
             <div className="center">
               <Link to="/form" className="waves-effect waves-light btn">
                 Book now

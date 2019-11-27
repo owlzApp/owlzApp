@@ -25,35 +25,39 @@ const WizardFormFourthPage = props => {
   timeCall = moment(timeCall).format("LT");
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h6 className="center">Did You confirm your reservation?</h6>
-      <div className="reservation">
-        <p>
-          <i className="fas fa-portrait"></i> {FinalValue.firstName}{" "}
-          {FinalValue.lastName}
-        </p>
-        <p>
-          date Start: {date}
-          date End: {dateEnd}
-        </p>
-        <p>
-          <i className="fas fa-envelope"></i> {FinalValue.email}
-        </p>
-        <p>
-          <i className="far fa-comment-dots"></i> {FinalValue.message}
-        </p>
-        <p>
-          <i className="fas fa-running"></i> {FinalValue.interest}
-        </p>
-        <p>
-          <i className="fas fa-users"></i> {FinalValue.peopleFemale} Women{" "}
-          {FinalValue.peopleMale} Man
-        </p>
-        <p>Time to be call</p>
-        at {timeCall} the {dateCall}
-        <p>
-          <i className="fas fa-mobile-alt"></i> {FinalValue.phone}
-        </p>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h6 className="center">Did You confirm your reservation?</h6>
+        <div className="reservation">
+          <p>
+            <i className="fas fa-portrait"></i> {FinalValue.firstName}{" "}
+            {FinalValue.lastName}
+          </p>
+          <p>
+            <i className="far fa-calendar-alt"></i> {date} To {dateEnd}
+          </p>
+          <p>
+            <i className="fas fa-envelope"></i> {FinalValue.email}
+          </p>
+          <p>
+            <i className="far fa-comment-dots"></i> {FinalValue.message}
+          </p>
+          <p>
+            <i className="fas fa-running"></i> {FinalValue.interest}
+          </p>
+          <p>
+            <i className="fas fa-users"></i> {FinalValue.peopleFemale} Women -
+            {FinalValue.peopleMale} Man
+          </p>
+          <p>
+            <i className="fas fa-mobile-alt"></i> {FinalValue.phone}
+          </p>
+          <p>
+            <i className="fas fa-phone-square"></i> Time to be call:
+          </p>
+          <hr></hr>
+          At {timeCall} the {dateCall}
+        </div>
         <div className="row">
           <button
             type="button"
@@ -70,8 +74,8 @@ const WizardFormFourthPage = props => {
             Submit
           </button>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 export default reduxForm({

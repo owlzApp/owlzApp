@@ -30,9 +30,11 @@ const renderDateTimePicker = ({
   </div>
 );
 
-const renderFieldCount = ({ input, label, type, meta: { touched, error } }) => (
+const renderFieldCount = ({ input, label, type }) => (
   <div>
-    <label>{label}</label>
+    <label style={{ display: "block" }} className="center">
+      {label}
+    </label>
     <div>
       <NumericInput
         mobile
@@ -116,19 +118,19 @@ const WizardFormFirstPage = props => {
                 <i className="material-icons">person</i>
                 <span>Number of person: {value}</span>
               </div>
-              <div className="collapsible-body">
+              <div className="collapsible-body fix-click">
                 <Field
                   name="peopleFemale"
                   type="number"
                   component={renderFieldCount}
-                  label="People Female"
+                  label="Female"
                   onChange={handleOnChangeFemale}
                 />
                 <Field
                   name="peopleMale"
                   type="number"
                   component={renderFieldCount}
-                  label="People Male"
+                  label="Male"
                   onChange={handleOnChangeMale}
                 />
               </div>
@@ -144,7 +146,7 @@ const WizardFormFirstPage = props => {
           />
         </div>
       </div>
-      <div>
+      <div className="row">
         <button type="submit" className="next btn right">
           Next
         </button>

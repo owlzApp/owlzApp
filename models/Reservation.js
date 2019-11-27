@@ -5,13 +5,17 @@ const Schema = mongoose.Schema;
 const reservationSchema = new Schema({
   city: String,
   date: String,
-  gender: String,
+  dateCall: String,
+  dateEnd: String,
+  timeCall: String,
   email: String,
   lastName: String,
   firstName: String,
   message: String,
   phone: String,
   people: String,
+  peopleFemale: String,
+  peopleMale: String,
   interest: String
 });
 
