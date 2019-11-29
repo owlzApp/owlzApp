@@ -8,10 +8,10 @@ class Footer extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col l6 s12">
-              <h5 className="">Footer Content</h5>
+              <h5 className="">About Us</h5>
               <p className="text-lighten-4">
-                You can use rows and columns here to organize your footer
-                content.
+                Connect with a VIP Liaison in the city you are traveling to and
+                Create personalized itenerary for a perfect trip
               </p>
             </div>
             <div className="col l4 offset-l2 s12">
