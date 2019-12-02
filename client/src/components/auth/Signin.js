@@ -15,7 +15,7 @@ class Signin extends React.Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div>
+      <div className="container">
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <h4 className="center">
             Sign in <i className="fas fa-user-alt"></i>

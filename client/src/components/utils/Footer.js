@@ -38,7 +38,10 @@ class Footer extends React.Component {
           </div>
         </div>
         <div className="footer-copyright">
-          <div className="container">© 2019 Copyright Owlz</div>
+          <div style={{ paddingLeft: "30px" }} className="container">
+            {" "}
+            © 2019 Copyright Owlz
+          </div>
           <div className="right">
             <img
               src={process.env.PUBLIC_URL + "/images/secure.png"}

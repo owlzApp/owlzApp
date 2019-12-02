@@ -17,7 +17,7 @@ import About from "./About";
 import Faq from "./Faq";
 
 class App extends React.Component {
-  UNSAFE_componentDidMount() {
+  componentDidMount() {
     this.props.fetchUser();
   }
 
@@ -34,13 +34,14 @@ class App extends React.Component {
           <Route path="/about" component={About} />
           <Route path="/faq" component={Faq} />
 
-          {this.props.authenticated ? (
+          {this.props.authenticated &&
+          this.props.authenticated.email === "owlz.service@gmail.com" ? (
             <div>
               <Route exact path="/user/:id" component={UserShow} />
               <Route exact path="/user/edit/:id" component={UserEdit} />
             </div>
           ) : (
-            ""
+            "Access refused, Must be connecting with owlz Admin"
           )}
         </BrowserRouter>
       </div>

@@ -37,7 +37,7 @@
   font-size: 18px;
 }
 
-.row-fluid .col-fluid{
+.row-fluid, .col-fluid{
   padding: 0 !important;
   margin-bottom: 0px !important;
 }

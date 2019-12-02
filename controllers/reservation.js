@@ -63,3 +63,13 @@ exports.send = function(req, res, next) {
     res.send(reservation);
   });
 };
+
+exports.getAllReservation = function(req, res, next) {
+  Reservation.find()
+    .then(function(dbReservation) {
+      res.json(dbReservation);
+    })
+    .catch(function(error) {
+      res.json(error);
+    });
+};

@@ -37,7 +37,6 @@ class Welcome extends React.Component {
   };
   render() {
     const { reservation } = this.props;
-    console.log(reservation);
     return (
       <div>
         {this.renderConfirmation(reservation)}

@@ -5,6 +5,7 @@ import {
   AUTH_ERROR,
   EDIT_USER,
   SEND_RESERVATION,
+  GET_RESERVATION,
   RESERVATION_ERROR
 } from "./types";
 import * as JWT from "jwt-decode";
@@ -111,6 +112,9 @@ export const deleteUser = (id, callback) => async dispatch => {
   callback(); /* history callback */
 };
 
+////////////////////////////////////////////// Reserevation /////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Send Reservation
 export const sendReservation = (finalForm, callback) => async dispatch => {
   try {
@@ -122,6 +126,19 @@ export const sendReservation = (finalForm, callback) => async dispatch => {
     dispatch({
       type: RESERVATION_ERROR,
       payload: "Cannot send the reservation please check all your input"
+    });
+  }
+};
+
+// Get all reservation
+export const getAllReservation = () => async dispatch => {
+  try {
+    const response = await axios.get(`/api/allReservation`);
+    dispatch({ type: GET_RESERVATION, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: RESERVATION_ERROR,
+      payload: "Cannot log reservation"
     });
   }
 };
