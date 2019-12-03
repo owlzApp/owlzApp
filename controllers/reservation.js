@@ -73,3 +73,23 @@ exports.getAllReservation = function(req, res, next) {
       res.json(error);
     });
 };
+
+exports.editReservation = function(req, res, next) {
+  console.log(req.body);
+  Reservation.findByIdAndUpdate(req.body.id, {
+    $set: { book: req.body.form }
+  }).then(function(reservation) {
+    res.json(reservation);
+  });
+};
+
+exports.deleteReservation = function(req, res, next) {
+  console.log(req.params.id);
+  Reservation.findByIdAndRemove(req.params.id)
+    .then(function(user) {
+      res.json(user);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+};

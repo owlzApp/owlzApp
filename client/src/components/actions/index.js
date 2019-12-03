@@ -6,6 +6,8 @@ import {
   EDIT_USER,
   SEND_RESERVATION,
   GET_RESERVATION,
+  EDIT_RESERVATION,
+  DELETE_RESERVATION,
   RESERVATION_ERROR
 } from "./types";
 import * as JWT from "jwt-decode";
@@ -139,6 +141,32 @@ export const getAllReservation = () => async dispatch => {
     dispatch({
       type: RESERVATION_ERROR,
       payload: "Cannot log reservation"
+    });
+  }
+};
+
+// Get all reservation
+export const confirmBook = form => async dispatch => {
+  try {
+    const response = await axios.post(`/api/reservation`, form);
+    dispatch({ type: EDIT_RESERVATION, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: RESERVATION_ERROR,
+      payload: "Cannot book reservation"
+    });
+  }
+};
+
+// Delete reservation
+export const deleteReservation = id => async dispatch => {
+  try {
+    const response = await axios.delete(`/api/reservation/${id}`);
+    dispatch({ type: DELETE_RESERVATION, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: RESERVATION_ERROR,
+      payload: "Cannot book reservation"
     });
   }
 };

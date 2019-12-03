@@ -2,12 +2,18 @@ import React from "react";
 import moment from "moment";
 
 const TableDashBoard = props => {
-  const { reservations } = props;
-  console.log(reservations);
+  const { reservations, bookConfirmation, deleteConfirmation } = props;
   if (reservations.length >= 0) {
     return reservations.map(reservation => {
       return (
-        <tr key={reservation._id}>
+        <tr
+          className={
+            reservation.book === true
+              ? "bookOK"
+              : reservation.book === false && "bookNo"
+          }
+          key={reservation._id}
+        >
           <td>{reservation.firstName}</td>
           <td>{reservation.lastName}</td>
           <td>{reservation.email}</td>
@@ -23,6 +29,29 @@ const TableDashBoard = props => {
           <td>
             {moment(reservation.dateCall).format("LL")}{" "}
             {moment(reservation.timeCall).format("LT")}
+          </td>
+
+          <td>
+            <button
+              className="dash-btn"
+              onClick={() => bookConfirmation(reservation._id, true)}
+            >
+              yes
+            </button>
+            <button
+              className="dash-btn-no"
+              onClick={() => bookConfirmation(reservation._id, false)}
+            >
+              no
+            </button>
+            {reservation.book === false && (
+              <button
+                className="dash-btn-no"
+                onClick={() => deleteConfirmation(reservation._id)}
+              >
+                delete
+              </button>
+            )}
           </td>
         </tr>
       );

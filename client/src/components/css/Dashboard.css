@@ -1,3 +1,56 @@
 .Box-table{
   padding: 15px;
 }
+
+.dash-btn {
+  display: inline;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid #1D976C; 
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.dash-btn-no {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid #ED213A; 
+  cursor: pointer;
+}
+
+.btn-filter{
+  background-color: black;
+  padding: 5px;
+  color: #d4af37;
+  border-radius: 5px;
+  border: 2px solid black; 
+  margin-right: 10px
+}
+
+.btn-filter:active, .btn-filter:focus{
+  background-color: black;
+  padding: 5px;
+  color: #fff !important;
+  border-radius: 5px;
+  border: 2px solid #d4af37; 
+  margin-right: 10px
+}
+
+.bookNo{
+  background: #ED213A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bookOK{
+  background: #1D976C;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #93F9B9, #1D976C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+table {
+  margin: 40px 0px !important;
+}
+
