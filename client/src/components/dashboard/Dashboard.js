@@ -3,50 +3,50 @@ import * as actions from "../actions";
 import { connect } from "react-redux";
 import "../css/Dashboard.css";
 import _ from "lodash";
-
+import TableDashBoard from "./TableDashbord";
+import moment from "moment";
 class Dashboard extends React.Component {
   state = {
-    people: false
+    initial: true,
+    people: false,
+    dateCall: false,
+    interest: false
   };
 
   componentDidMount() {
     this.props.getAllReservation();
   }
 
-  renderPeople = reservations => {
+  renderPeople = () => {
     this.setState({ people: true });
-    var people = _.orderBy(reservations, ["type", "people"], ["desc", "desc"]);
-    console.log(people);
-    return this.renderReservation(people);
+    this.setState({ dateCall: false });
+    this.setState({ initial: false });
+    this.setState({ interest: false });
   };
 
-  renderCustomField = () => {};
+  renderInterest = () => {
+    this.setState({ people: false });
+    this.setState({ dateCall: false });
+    this.setState({ initial: false });
+    this.setState({ interest: true });
+  };
 
-  renderReservation = reservations => {
-    console.log(reservations);
-    console.log(this.state);
-    if (reservations.length >= 0) {
-      return reservations.map(reservation => {
-        return (
-          <tr key={reservation._id}>
-            <td>{reservation.firstName}</td>
-            <td>{reservation.lastName}</td>
-            <td>{reservation.email}</td>
-            <td>{reservation.phone}</td>
-            <td>{reservation.city}</td>
-            <td>
-              {reservation.date} To {reservation.dateEnd}
-            </td>
-            <td>{reservation.interest}</td>
-            <td>{reservation.message}</td>
-            <td>{reservation.people}</td>
-            <td>
-              {reservation.dateCall} {reservation.timeCall}
-            </td>
-          </tr>
-        );
-      });
-    } else {
+  backToNormal = () => {
+    this.setState({ people: false });
+    this.setState({ dateCall: false });
+    this.setState({ initial: true });
+    this.setState({ interest: false });
+  };
+
+  renderDateToCall = () => {
+    this.setState({ dateCall: true });
+    this.setState({ people: false });
+    this.setState({ initial: false });
+    this.setState({ interest: false });
+  };
+
+  render() {
+    if (!this.props.reservations.length > 0) {
       return (
         <div style={{ marginTop: "10%" }} className="center">
           <p>Loading...</p>
@@ -66,22 +66,28 @@ class Dashboard extends React.Component {
         </div>
       );
     }
-  };
-
-  render() {
-    if (!this.props.reservations.length > 0) {
-      return null;
-    }
-
+    const people = _.orderBy(this.props.reservations, ["people"], ["desc"]);
+    const interest = _.orderBy(this.props.reservations, ["interest"], ["asc"]);
+    const dateToCall = _.sortBy(this.props.reservations, "dateCall", function(
+      o
+    ) {
+      return new moment(o.date);
+    }).reverse();
     return (
       <div className="Box-table">
         <h4>Dashboard</h4>
         <div>
-          <button
-            type="submit"
-            onClick={() => this.renderPeople(this.props.reservations)}
-          >
-            here
+          <button type="submit" onClick={this.backToNormal}>
+            Reset
+          </button>
+          <button type="submit" onClick={this.renderPeople}>
+            By People
+          </button>
+          <button type="submit" onClick={this.renderDateToCall}>
+            Date To Call
+          </button>
+          <button type="submit" onClick={this.renderInterest}>
+            Interest
           </button>
         </div>
         <table className="responsive-table striped centered">
@@ -100,11 +106,21 @@ class Dashboard extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.renderReservation(this.props.reservations)}
-            {this.state.people === true ? (
-              this.renderPeople(this.props.reservations)
-            ) : (
-              <div>nothing</div>
+            {/* Render Initial Table */}
+            {this.state.initial === true && (
+              <TableDashBoard reservations={this.props.reservations} />
+            )}
+            {/* Render Max Person */}
+            {this.state.people === true && (
+              <TableDashBoard reservations={people} />
+            )}
+            {/* Render by Date Call */}
+            {this.state.dateCall === true && (
+              <TableDashBoard reservations={dateToCall} />
+            )}
+            {/* Render by Date Call */}
+            {this.state.interest === true && (
+              <TableDashBoard reservations={interest} />
             )}
           </tbody>
         </table>

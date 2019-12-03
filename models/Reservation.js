@@ -14,9 +14,9 @@ const reservationSchema = new Schema(
     firstName: String,
     message: String,
     phone: String,
-    people: String,
-    peopleFemale: String,
-    peopleMale: String,
+    people: Number,
+    peopleFemale: Number,
+    peopleMale: Number,
     interest: String
   },
   {

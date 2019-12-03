@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import BoxImage from "../utils/BoxImage";
 import ScrollAnimation from "react-animate-on-scroll";
 import M from "materialize-css/dist/js/materialize.min.js";
-import moment from "moment";
+// import moment from "moment";
 
 class WizardForm extends Component {
   constructor(props) {
@@ -79,18 +79,6 @@ class WizardForm extends Component {
   }
 
   onSubmit = form => {
-    let date = form.date;
-    date = moment(date).format("LL");
-
-    let dateEnd = form.dateEnd;
-    dateEnd = moment(dateEnd).format("LL");
-
-    let dateCall = form.dateCall;
-    dateCall = moment(dateCall).format("LL");
-
-    let timeCall = form.timeCall;
-    timeCall = moment(timeCall).format("LT");
-
     form = {
       email: form.email,
       firstName: form.firstName,
@@ -98,14 +86,14 @@ class WizardForm extends Component {
       phone: form.phone,
       interest: form.interest,
       city: form.city,
-      date: date,
-      dateEnd: dateEnd,
+      date: form.date,
+      dateEnd: form.dateEnd,
       people: this.state.CountTotal,
       peopleFemale: form.peopleFemale,
       peopleMale: form.peopleMale,
       message: form.message,
-      dateCall: dateCall,
-      timeCall: timeCall
+      dateCall: form.dateCall,
+      timeCall: form.timeCall
     };
     this.props.sendReservation(form, () => {
       this.props.history.push(`/`);
