@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as actions from "../actions";
-import Dashboard from "../dashboard/Dashboard";
 
 class UserShow extends React.Component {
   componentDidMount() {
@@ -59,11 +58,6 @@ class UserShow extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col m12 s12">
-            <Dashboard />
           </div>
         </div>
       </div>

@@ -5,6 +5,8 @@ import "../css/Dashboard.css";
 import _ from "lodash";
 import TableDashBoard from "./TableDashbord";
 import moment from "moment";
+import ChartWithAnimation from "./ChartWithAnimation";
+
 class Dashboard extends React.Component {
   state = {
     initial: true,
@@ -15,6 +17,10 @@ class Dashboard extends React.Component {
     date: false,
     book: false
   };
+
+  componentDidMount() {
+    this.props.getAllReservation();
+  }
 
   bookConfirmation = (id, form) => {
     const formfinal = {
@@ -29,14 +35,6 @@ class Dashboard extends React.Component {
     this.props.deleteReservation(form);
     this.props.getAllReservation();
   };
-
-  // componentWillReceiveProps(nextProp) {
-  //   console.log(nextProp);
-  // }
-
-  componentDidMount() {
-    this.props.getAllReservation();
-  }
 
   renderPeople = () => {
     this.setState({ people: true });
@@ -153,35 +151,43 @@ class Dashboard extends React.Component {
       o
     ) {
       return new moment(o.date);
-    }).reverse();
+    });
     const date = _.sortBy(this.props.reservations, "date", function(o) {
       return new moment(o.date);
-    }).reverse();
+    });
     const city = _.sortBy(this.props.reservations, ["city"], ["asc"]);
     const deal = _.sortBy(this.props.reservations, ["book"]);
     // End
 
     return (
       <div className="Box-table">
-        <h4>Dashboard {totalCustomer}</h4>
-        <ul>
-          <li>
-            Deal <i className="far fa-thumbs-up"></i>: {countDeal}
-          </li>
-          <li>
-            No Deal <i className="far fa-thumbs-down"></i>: {countNoDeal}
-          </li>
-          <li>
-            Pending <i className="far fa-pause-circle"></i>: {pending}
-          </li>
-        </ul>
-        <div>
+        <div className="center">
+          <h4>Dashboard {totalCustomer}</h4>
+          <ul>
+            <li style={{ color: "#1D976C" }}>
+              Deal <i className="far fa-thumbs-up"></i>: {countDeal}
+            </li>
+            <li style={{ color: "#ED213A" }}>
+              No Deal <i className="far fa-thumbs-down"></i>: {countNoDeal}
+            </li>
+            <li>
+              Pending <i className="far fa-pause-circle"></i>: {pending}
+            </li>
+          </ul>
+        </div>
+        <ChartWithAnimation
+          totalCustomer={totalCustomer}
+          countDeal={countDeal}
+          countNoDeal={countNoDeal}
+          pending={pending}
+        />
+        <div className="center">
           <button
             className="btn-filter"
             type="submit"
             onClick={this.backToNormal}
           >
-            Reset
+            Initial
           </button>
           <button
             className="btn-filter"

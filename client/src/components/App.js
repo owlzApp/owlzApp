@@ -15,6 +15,7 @@ import WizardForm from "./form/WizardForm";
 import Header from "./utils/Header";
 import About from "./About";
 import Faq from "./Faq";
+import Dashboard from "./dashboard/Dashboard";
 
 class App extends React.Component {
   componentDidMount() {
@@ -38,6 +39,7 @@ class App extends React.Component {
           this.props.authenticated.email === "owlz.service@gmail.com" ? (
             <div>
               <Route exact path="/user/:id" component={UserShow} />
+              <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/user/edit/:id" component={UserEdit} />
             </div>
           ) : (
