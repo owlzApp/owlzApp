@@ -6,6 +6,7 @@ import _ from "lodash";
 import TableDashBoard from "./TableDashbord";
 import moment from "moment";
 import ChartWithAnimation from "./ChartWithAnimation";
+import MonthSell from "./MonthSell";
 
 class Dashboard extends React.Component {
   state = {
@@ -175,12 +176,19 @@ class Dashboard extends React.Component {
             </li>
           </ul>
         </div>
-        <ChartWithAnimation
-          totalCustomer={totalCustomer}
-          countDeal={countDeal}
-          countNoDeal={countNoDeal}
-          pending={pending}
-        />
+        <div className="row">
+          {/* <div className="col m6 s12">
+            <MonthSell totalCustomer={totalCustomer} />
+          </div> */}
+          <div className="col m12 s12">
+            <ChartWithAnimation
+              totalCustomer={totalCustomer}
+              countDeal={countDeal}
+              countNoDeal={countNoDeal}
+              pending={pending}
+            />
+          </div>
+        </div>
         <div className="center">
           <button
             className="btn-filter"

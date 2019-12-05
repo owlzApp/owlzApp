@@ -7,6 +7,7 @@ import Concept from "./utils/Concept";
 import Footer from "./utils/Footer";
 import Partner from "./utils/Partner";
 import Review from "./utils/Review";
+import moment from "moment";
 
 class Welcome extends React.Component {
   state = {
@@ -27,7 +28,8 @@ class Welcome extends React.Component {
             <i className="far fa-check-circle"></i> {reservation.firstName}{" "}
             {reservation.lastName}, your Request is on the way! Owlz team will
             contact you on this number {reservation.phone} around{" "}
-            {reservation.timeCall} on the {reservation.dateCall}.
+            {moment(reservation.timeCall).format("LT")} on the{" "}
+            {moment(reservation.dateCall).format("LL")}.
           </span>
         </div>
       );
