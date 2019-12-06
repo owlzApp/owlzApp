@@ -154,6 +154,10 @@ select {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.next-previous{
+  margin: 40px 0px;
+}
+
 @media only screen and (max-width: 600px) {
   .block-form {
     margin-top: 0%;

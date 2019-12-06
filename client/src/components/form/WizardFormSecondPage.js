@@ -35,6 +35,7 @@ const WizardFormSecondPage = props => {
           <label>Principal Interest or Activity</label>
           <Field name="interest" component={renderInterestSelector} />
         </div>
+        <br></br>
         <div className="col m12 s12">
           <Field
             label="Message"
@@ -45,7 +46,7 @@ const WizardFormSecondPage = props => {
           />
         </div>
       </div>
-      <div>
+      <div className="row">
         <button
           type="button"
           className="previous btn left"
