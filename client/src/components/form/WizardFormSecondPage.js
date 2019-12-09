@@ -2,6 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
 import renderField from "./renderField";
+import { Link } from "react-router-dom";
 const interests = [
   "Nightclubs",
   "Restaurants",
@@ -27,7 +28,7 @@ const renderInterestSelector = ({ input, meta: { touched, error } }) => (
 );
 
 const WizardFormSecondPage = props => {
-  const { handleSubmit, previousPage } = props;
+  const { handleSubmit, previousPage, pristine, reset, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
@@ -56,6 +57,18 @@ const WizardFormSecondPage = props => {
         </button>
         <button type="submit" className="next btn right">
           Next
+        </button>
+      </div>
+      <div className="row">
+        <button
+          className="back-home left"
+          type="button"
+          disabled={pristine || submitting}
+          onClick={reset}
+        >
+          <Link to="/">
+            <i className="far fa-arrow-alt-circle-left"></i> Return home
+          </Link>
         </button>
       </div>
     </form>

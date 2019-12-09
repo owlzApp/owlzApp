@@ -21,6 +21,7 @@
   padding: 20px;
   margin-top: 5%;
 }
+
 .react-tel-input .flag-dropdown {
   right: 0;
   background-color: #fff !important;
@@ -40,9 +41,14 @@
 }
 
 .back-home{
+  border: none;
+}
+
+.back-home a{
   display: block;
   margin-left: auto;
-  margin-right: 40px;
+  border: none;
+  color: #d4af37 !important;
   background: none !important;
   box-shadow: none !important;
   cursor: pointer;
@@ -78,43 +84,16 @@ button:focus {
   box-shadow: none !important;
 }
 
-.collapsible {
-  border-top: none; 
-  border-right: none; 
-  border-left: none;
-  border-bottom: 1px solid #ddd !important;
-  box-shadow: none !important;
-  border-radius: 5px !important;
-  margin: .5rem 0 1rem 0;
-}
-
-
-.collapsible-header {
-  display: flex;
-  height: 42px;
+.Collapsible{
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  line-height: 1.5;
-  padding: 12px;
-  background-color: transparent !important;
-  border-bottom: none !important;
-  border-radius: none !important;
 }
 
-.collapsible-header i {
-  margin-top: -5px;
-}
-
-.collapsible-header span{
-  margin-top: -1px;
-  margin-left: -14px;
-}
-.collapsible input[type=text]:not(.browser-default), .collapsible input:focus:not([readonly]){
+.react-numeric-input input:not(.browser-default), .react-numeric-input input:focus:not([readonly]){
   border-bottom: none !important;
   box-shadow: none !important;
 }
 
-.collapsible b{
+ b{
     width: 40px !important;
     height: 40px !important;
     border-radius: 50px !important;

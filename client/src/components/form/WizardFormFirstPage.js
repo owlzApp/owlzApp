@@ -1,14 +1,14 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { Link } from "react-router-dom";
 import validate from "./validate";
-import renderField from "./renderField";
 import DateTimePicker from "react-widgets/lib/DateTimePicker";
 import moment from "moment";
 import momentLocalizer from "react-widgets-moment";
 import "react-widgets/dist/css/react-widgets.css";
 import NumericInput from "react-numeric-input";
-import M from "materialize-css/dist/js/materialize.min.js";
-
+import Collapsible from "react-collapsible";
+const interests = ["Miami"];
 momentLocalizer(moment);
 
 const renderDateTimePicker = ({
@@ -65,9 +65,27 @@ const renderFieldCountTotal = ({
   </div>
 );
 
+const renderCitySelector = ({ input, label, meta: { touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <select {...input}>
+      <option value="">Select your interest...</option>
+      {interests.map(val => (
+        <option value={val} key={val}>
+          {val}
+        </option>
+      ))}
+    </select>
+    {touched && error && <span className="error-color">{error}</span>}
+  </div>
+);
+
 const WizardFormFirstPage = props => {
   const {
     handleSubmit,
+    pristine,
+    reset,
+    submitting,
     value,
     handleOnChangeFemale,
     handleOnChangeMale
@@ -79,15 +97,16 @@ const WizardFormFirstPage = props => {
     }
   };
 
-  // Collasible
-  const elemCollapsible = document.querySelectorAll(".collapsible");
-  M.Collapsible.init(elemCollapsible, {});
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
         <div className="col m6 s12">
-          <Field name="city" type="text" component={renderField} label="City" />
+          <Field
+            name="city"
+            type="text"
+            component={renderCitySelector}
+            label="City"
+          />
         </div>
         <div className="col m6 s12"></div>
       </div>
@@ -112,30 +131,22 @@ const WizardFormFirstPage = props => {
       <div className="row">
         <div className="col m6 s12">
           <label>People</label>
-          <ul className="collapsible">
-            <li>
-              <div className="collapsible-header">
-                <i className="material-icons">person</i>
-                <span>Number of person: {value}</span>
-              </div>
-              <div className="collapsible-body fix-click">
-                <Field
-                  name="peopleFemale"
-                  type="number"
-                  component={renderFieldCount}
-                  label="Female"
-                  onChange={handleOnChangeFemale}
-                />
-                <Field
-                  name="peopleMale"
-                  type="number"
-                  component={renderFieldCount}
-                  label="Male"
-                  onChange={handleOnChangeMale}
-                />
-              </div>
-            </li>
-          </ul>
+          <Collapsible trigger={`Number of person: ${value}`}>
+            <Field
+              name="peopleFemale"
+              type="number"
+              component={renderFieldCount}
+              label="Female"
+              onChange={handleOnChangeFemale}
+            />
+            <Field
+              name="peopleMale"
+              type="number"
+              component={renderFieldCount}
+              label="Male"
+              onChange={handleOnChangeMale}
+            />
+          </Collapsible>
           <Field
             name="people"
             type="number"
@@ -149,6 +160,18 @@ const WizardFormFirstPage = props => {
       <div className="row">
         <button type="submit" className="next btn right">
           Next
+        </button>
+      </div>
+      <div className="row">
+        <button
+          className="back-home right"
+          type="button"
+          disabled={pristine || submitting}
+          onClick={reset}
+        >
+          <Link to="/">
+            <i className="far fa-arrow-alt-circle-left"></i> Return home
+          </Link>
         </button>
       </div>
     </form>

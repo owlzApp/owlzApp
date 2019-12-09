@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { Link } from "react-router-dom";
 import validate from "./validate";
 import renderField from "./renderField";
 import RenderFieldPhone from "./renderFieldPhone";
@@ -47,7 +48,15 @@ const renderDateTimePicker = ({
 );
 
 const WizardFormThirdPage = props => {
-  const { handleSubmit, previousPage, handleOnChange, value } = props;
+  const {
+    handleSubmit,
+    previousPage,
+    handleOnChange,
+    value,
+    pristine,
+    reset,
+    submitting
+  } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
@@ -116,6 +125,19 @@ const WizardFormThirdPage = props => {
         </button>
         <button type="submit" className="next btn right">
           Next
+        </button>
+      </div>
+
+      <div className="row">
+        <button
+          className="back-home left"
+          type="button"
+          disabled={pristine || submitting}
+          onClick={reset}
+        >
+          <Link to="/">
+            <i className="far fa-arrow-alt-circle-left"></i> Return home
+          </Link>
         </button>
       </div>
     </form>

@@ -20,9 +20,10 @@ const validate = values => {
     errors.interest = "Required";
   }
 
-  if (!values.message) {
-    errors.message = "Required";
-  }
+  // if (!values.message) {
+  //   errors.message = "Required";
+  // }
+
   if (!values.date) {
     errors.date = "Required select one date";
   }

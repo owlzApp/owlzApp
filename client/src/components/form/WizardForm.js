@@ -8,11 +8,9 @@ import "../css/formReservation.css";
 import "../css/ProgressBar.css";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import { Link } from "react-router-dom";
 import BoxImage from "../utils/BoxImage";
 import ScrollAnimation from "react-animate-on-scroll";
 import M from "materialize-css/dist/js/materialize.min.js";
-// import moment from "moment";
 
 class WizardForm extends Component {
   constructor(props) {
@@ -31,11 +29,10 @@ class WizardForm extends Component {
     };
   }
   componentDidMount() {
-    const elems = document.querySelectorAll(".datepicker");
-    M.Datepicker.init(elems, {});
-
     const elemCollapsible = document.querySelectorAll(".collapsible");
     M.Collapsible.init(elemCollapsible, {});
+    const elems = document.querySelectorAll(".datepicker");
+    M.Datepicker.init(elems, {});
   }
 
   handleOnChange = value => {
@@ -101,6 +98,7 @@ class WizardForm extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { page } = this.state;
     return (
       <div className="container-fluid">
@@ -151,11 +149,6 @@ class WizardForm extends Component {
                 </ScrollAnimation>
               )}
             </div>
-          </div>
-          <div>
-            <Link className="btn back-home right" to="/">
-              <i className="far fa-arrow-alt-circle-left"></i> Return home
-            </Link>
           </div>
         </div>
       </div>
