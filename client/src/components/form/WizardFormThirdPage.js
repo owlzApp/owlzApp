@@ -8,6 +8,7 @@ import DateTimePicker from "react-widgets/lib/DateTimePicker";
 import moment from "moment";
 import momentLocalizer from "react-widgets-moment";
 import "react-widgets/dist/css/react-widgets.css";
+import Collapsible from "react-collapsible";
 
 momentLocalizer(moment);
 
@@ -16,7 +17,9 @@ const renderDateTime = ({
   meta: { touched, error },
   label
 }) => (
-  <div>
+  <div className="block-collaps">
+    <label>Step 1:</label>
+    <br></br>
     <label>{label}</label>
     <DateTimePicker
       date={false}
@@ -24,6 +27,7 @@ const renderDateTime = ({
       step={30}
       placeholder="Click on the Lock"
     />
+    <span className="asterik-time">*Time is on Eastern Standard Time</span>
     {touched && error && <span className="error-color">{error}</span>}
   </div>
 );
@@ -33,7 +37,9 @@ const renderDateTimePicker = ({
   meta: { touched, error },
   label
 }) => (
-  <div>
+  <div className="block-collaps">
+    <label>Step 2:</label>
+    <br></br>
     <label>{label}</label>
     <DateTimePicker
       onChange={onChange}
@@ -57,6 +63,19 @@ const WizardFormThirdPage = props => {
     reset,
     submitting
   } = props;
+  const labelForCollaps = () => {
+    return (
+      <div style={{ color: "#d4af37" }} className="center">
+        <i className="far fa-clock"></i> Time to be call
+      </div>
+    );
+  };
+  const valueError = values => {
+    if (!values.timeCall) {
+      return <div className="error-color-count">minimum one person</div>;
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
@@ -96,24 +115,26 @@ const WizardFormThirdPage = props => {
           />
         </div>
       </div>
-      <div className="row">
-        <div className="col m6 s12">
-          <Field
-            name="timeCall"
-            label="Time you want to be call"
-            date={false}
-            component={renderDateTime}
-          />
+      <Collapsible className="people-collaps" trigger={labelForCollaps()}>
+        <div className="row">
+          <div className="col m6 s12">
+            <Field
+              name="timeCall"
+              label="Time you want to be call"
+              date={false}
+              component={renderDateTime}
+            />
+          </div>
+          <div className="col m6 s12">
+            <Field
+              name="dateCall"
+              label="Date you want to be call"
+              date={false}
+              component={renderDateTimePicker}
+            />
+          </div>
         </div>
-        <div className="col m6 s12">
-          <Field
-            name="dateCall"
-            label="Date you want to be call"
-            date={false}
-            component={renderDateTimePicker}
-          />
-        </div>
-      </div>
+      </Collapsible>
 
       <div className="row">
         <button

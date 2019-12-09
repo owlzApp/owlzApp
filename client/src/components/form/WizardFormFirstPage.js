@@ -8,6 +8,7 @@ import momentLocalizer from "react-widgets-moment";
 import "react-widgets/dist/css/react-widgets.css";
 import NumericInput from "react-numeric-input";
 import Collapsible from "react-collapsible";
+
 const interests = ["Miami"];
 momentLocalizer(moment);
 
@@ -31,7 +32,7 @@ const renderDateTimePicker = ({
 );
 
 const renderFieldCount = ({ input, label, type }) => (
-  <div>
+  <div className="block-collaps">
     <label style={{ display: "block" }} className="center">
       {label}
     </label>
@@ -69,7 +70,7 @@ const renderCitySelector = ({ input, label, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>
     <select {...input}>
-      <option value="">Select your interest...</option>
+      <option value="">Select your city...</option>
       {interests.map(val => (
         <option value={val} key={val}>
           {val}
@@ -131,7 +132,10 @@ const WizardFormFirstPage = props => {
       <div className="row">
         <div className="col m6 s12">
           <label>People</label>
-          <Collapsible trigger={`Number of person: ${value}`}>
+          <Collapsible
+            className="people-collaps"
+            trigger={`Number of person: ${value}`}
+          >
             <Field
               name="peopleFemale"
               type="number"
@@ -146,15 +150,15 @@ const WizardFormFirstPage = props => {
               label="Male"
               onChange={handleOnChangeMale}
             />
+            <Field
+              name="people"
+              type="number"
+              component={renderFieldCountTotal}
+              label="People"
+              value={value}
+              validate={valueError}
+            />
           </Collapsible>
-          <Field
-            name="people"
-            type="number"
-            component={renderFieldCountTotal}
-            label="People"
-            value={value}
-            validate={valueError}
-          />
         </div>
       </div>
       <div className="row">

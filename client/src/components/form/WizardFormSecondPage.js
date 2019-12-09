@@ -3,27 +3,45 @@ import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
 import renderField from "./renderField";
 import { Link } from "react-router-dom";
+import { SelectList } from "react-widgets";
+import "react-widgets/dist/css/react-widgets.css";
+
 const interests = [
   "Nightclubs",
   "Restaurants",
   "Living Accommodations",
   "Events",
   "Cars",
-  "Yachts & Boats",
-  "Multiple"
+  "Yachts & Boats"
 ];
 
-const renderInterestSelector = ({ input, meta: { touched, error } }) => (
+const renderSelectList = ({ input, data, label, meta: { touched, error } }) => (
   <div>
-    <select {...input}>
-      <option value="">Select your interest...</option>
-      {interests.map(val => (
-        <option value={val} key={val}>
-          {val}
-        </option>
-      ))}
-    </select>
+    <label style={{ marginBottom: "10px" }}>{label}</label>
+    <SelectList
+      {...input}
+      onBlur={() => input.onBlur()}
+      value={input.value || []}
+      multiple={true}
+      data={data}
+    />
     {touched && error && <span className="error-color">{error}</span>}
+  </div>
+);
+
+const renderFieldMessage = ({
+  input,
+  label,
+  type,
+  placeholder,
+  meta: { touched, error }
+}) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={placeholder} type={type} />
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
   </div>
 );
 
@@ -33,16 +51,20 @@ const WizardFormSecondPage = props => {
     <form onSubmit={handleSubmit}>
       <div className="row">
         <div className="col m12 s12">
-          <label>Principal Interest or Activity</label>
-          <Field name="interest" component={renderInterestSelector} />
+          <Field
+            name="interest"
+            component={renderSelectList}
+            data={interests}
+            label="Principal Interest or Activity"
+          />
         </div>
-        <br></br>
         <div className="col m12 s12">
+          <br></br>
           <Field
             label="Message"
             name="message"
             type="text"
-            component={renderField}
+            component={renderFieldMessage}
             placeholder="Any additional information ex. special occasion"
           />
         </div>

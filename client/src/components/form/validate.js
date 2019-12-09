@@ -16,7 +16,7 @@ const validate = values => {
     errors.phone = "Required";
   }
 
-  if (!values.interest) {
+  if (!values.interest || values.interest.length === 0) {
     errors.interest = "Required";
   }
 

@@ -11,6 +11,7 @@ import * as actions from "../actions";
 import BoxImage from "../utils/BoxImage";
 import ScrollAnimation from "react-animate-on-scroll";
 import M from "materialize-css/dist/js/materialize.min.js";
+import moment from "moment";
 
 class WizardForm extends Component {
   constructor(props) {
@@ -68,7 +69,7 @@ class WizardForm extends Component {
   nextPage(form) {
     this.setState({ finalValue: form });
     this.setState({ page: this.state.page + 1 });
-    console.log(this.state.CountTotal);
+    console.log(form);
   }
 
   previousPage() {
@@ -98,7 +99,6 @@ class WizardForm extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { page } = this.state;
     return (
       <div className="container-fluid">

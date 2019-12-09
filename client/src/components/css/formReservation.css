@@ -57,6 +57,7 @@
 label {
   color:  #d4af37 !important;
 }
+
 input:focus:not([readonly]){
   border-bottom: 1px solid #d4af37 !important;
   box-shadow: 0 1px 0 0 #d4af37 !important;
@@ -65,6 +66,7 @@ input:focus:not([readonly]){
 
 .rw-widget-container {
   border: none !important;
+  margin-top: 10px;
 }
 
 .rw-select-bordered {
@@ -84,9 +86,38 @@ button:focus {
   box-shadow: none !important;
 }
 
-.Collapsible{
+.people-collaps {
+  cursor: pointer;
+  border: 1px solid #f9f9f9;
+  border-radius: 4px;
+  margin-bottom: 40px;
+}
+
+.people-collaps span{
+width: 100%;
+display: block;
+padding: 10px;
+}
+
+.is-open{
   cursor: pointer;
 }
+
+.block-collaps{
+  padding: 20px;
+}
+
+.rw-popup-container {
+  position: relative !important;
+}
+
+.asterik-time{
+  display: block;
+  color: darkgrey;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 
 .react-numeric-input input:not(.browser-default), .react-numeric-input input:focus:not([readonly]){
   border-bottom: none !important;
@@ -103,6 +134,10 @@ button:focus {
 
 select {
   margin-top: 9px !important;
+}
+
+input[type="checkbox"]:not(:checked), input[type="checkbox"]:checked {
+  opacity: 1 !important;
 }
 
 .reservation{
@@ -140,9 +175,11 @@ select {
 @media only screen and (max-width: 600px) {
   .block-form {
     margin-top: 0%;
-}
-input, .react-tel-input{
-  margin-bottom: 30px !important;
+  }
+  input, .react-tel-input{
+    margin-bottom: 30px !important;
 
+  }
 }
-}
+
+
