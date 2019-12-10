@@ -22,9 +22,9 @@ class Welcome extends React.Component {
       return (
         <div className={`alert ${this.state.close}`}>
           <span>
-            <a className="close-alert" onClick={this.closeAlert}>
+            <p className="close-alert" onClick={this.closeAlert}>
               <i className="far fa-times-circle"></i>
-            </a>
+            </p>
             <i className="far fa-check-circle"></i> {reservation.firstName}{" "}
             {reservation.lastName}, your Request is on the way! Owlz team will
             contact you on this number {reservation.phone} around{" "}

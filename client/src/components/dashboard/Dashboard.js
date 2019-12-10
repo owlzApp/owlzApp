@@ -6,7 +6,6 @@ import _ from "lodash";
 import TableDashBoard from "./TableDashbord";
 import moment from "moment";
 import ChartWithAnimation from "./ChartWithAnimation";
-import MonthSell from "./MonthSell";
 
 class Dashboard extends React.Component {
   state = {

@@ -24,6 +24,12 @@ const WizardFormFourthPage = props => {
   let timeCall = props.FinalValue.timeCall;
   timeCall = moment(timeCall).format("LT");
 
+  const renderInterest = () => {
+    return FinalValue.interest.map(function(item, i) {
+      return <li key={i}>{item}</li>;
+    });
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -43,7 +49,7 @@ const WizardFormFourthPage = props => {
             <i className="far fa-comment-dots"></i> {FinalValue.message}
           </p>
           <p>
-            <i className="fas fa-running"></i> {FinalValue.interest}
+            <i className="fas fa-running"></i> {renderInterest()}
           </p>
           <p>
             <i className="fas fa-users"></i> {FinalValue.peopleFemale} Women -

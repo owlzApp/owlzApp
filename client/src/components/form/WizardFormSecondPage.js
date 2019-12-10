@@ -1,7 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import validate from "./validate";
-import renderField from "./renderField";
 import { Link } from "react-router-dom";
 import { SelectList } from "react-widgets";
 import "react-widgets/dist/css/react-widgets.css";

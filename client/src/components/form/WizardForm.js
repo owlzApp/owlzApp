@@ -11,7 +11,6 @@ import * as actions from "../actions";
 import BoxImage from "../utils/BoxImage";
 import ScrollAnimation from "react-animate-on-scroll";
 import M from "materialize-css/dist/js/materialize.min.js";
-import moment from "moment";
 
 class WizardForm extends Component {
   constructor(props) {
@@ -23,6 +22,7 @@ class WizardForm extends Component {
       color: "item-active",
       phone: "",
       errorPhone: "",
+      errorCallBack: "",
       countFemale: 0,
       countMale: 0,
       CountTotal: 0,
@@ -66,9 +66,16 @@ class WizardForm extends Component {
     }
   };
 
+  FunctionErrorCallBack = () => {
+    this.setState({
+      errorCallBack: "Please Check the form something missing..."
+    });
+  };
+
   nextPage(form) {
     this.setState({ finalValue: form });
     this.setState({ page: this.state.page + 1 });
+    this.setState({ errorCallBack: "" });
     console.log(form);
   }
 
@@ -136,6 +143,8 @@ class WizardForm extends Component {
                     handleOnChange={this.handleOnChange}
                     value={this.state.phone}
                     errorPhone={this.state.errorPhone}
+                    errorCallBack={this.state.errorCallBack}
+                    FunctionErrorCallBack={this.FunctionErrorCallBack}
                   />
                 </ScrollAnimation>
               )}

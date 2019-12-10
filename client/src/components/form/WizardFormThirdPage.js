@@ -12,47 +12,6 @@ import Collapsible from "react-collapsible";
 
 momentLocalizer(moment);
 
-const renderDateTime = ({
-  input: { onChange },
-  meta: { touched, error },
-  label
-}) => (
-  <div className="block-collaps">
-    <label>Step 1:</label>
-    <br></br>
-    <label>{label}</label>
-    <DateTimePicker
-      date={false}
-      onChange={onChange}
-      step={30}
-      placeholder="Click on the Lock"
-    />
-    <span className="asterik-time">*Time is on Eastern Standard Time</span>
-    {touched && error && <span className="error-color">{error}</span>}
-  </div>
-);
-
-const renderDateTimePicker = ({
-  input: { onChange, value },
-  meta: { touched, error },
-  label
-}) => (
-  <div className="block-collaps">
-    <label>Step 2:</label>
-    <br></br>
-    <label>{label}</label>
-    <DateTimePicker
-      onChange={onChange}
-      format="DD MMM YYYY"
-      time={false}
-      min={moment().toDate()}
-      value={!value ? null : new Date(value)}
-      placeholder="Click on the Calendar"
-    />
-    {touched && error && <span className="error-color">{error}</span>}
-  </div>
-);
-
 const WizardFormThirdPage = props => {
   const {
     handleSubmit,
@@ -60,9 +19,53 @@ const WizardFormThirdPage = props => {
     handleOnChange,
     value,
     pristine,
+    errorCallBack,
+    FunctionErrorCallBack,
     reset,
     submitting
   } = props;
+
+  const renderDateTime = ({
+    input: { onChange },
+    meta: { touched, error },
+    label
+  }) => (
+    <div className="block-collaps">
+      <label>Step 1:</label>
+      <br></br>
+      <label>{label}</label>
+      <DateTimePicker
+        date={false}
+        onChange={onChange}
+        step={30}
+        placeholder="Click on the Lock"
+      />
+      <span className="asterik-time">*Eastern Standard Time</span>
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
+  );
+
+  const renderDateTimePicker = ({
+    input: { onChange, value },
+    meta: { touched, error },
+    label
+  }) => (
+    <div className="block-collaps">
+      <label>Step 2:</label>
+      <br></br>
+      <label>{label}</label>
+      <DateTimePicker
+        onChange={onChange}
+        format="DD MMM YYYY"
+        time={false}
+        min={moment().toDate()}
+        value={!value ? null : new Date(value)}
+        placeholder="Click on the Calendar"
+      />
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
+  );
+
   const labelForCollaps = () => {
     return (
       <div style={{ color: "#d4af37" }} className="center">
@@ -70,9 +73,11 @@ const WizardFormThirdPage = props => {
       </div>
     );
   };
-  const valueError = values => {
-    if (!values.timeCall) {
-      return <div className="error-color-count">minimum one person</div>;
+
+  const errorCall = form => {
+    console.log(form);
+    if (props.valid === false) {
+      FunctionErrorCallBack();
     }
   };
 
@@ -115,6 +120,7 @@ const WizardFormThirdPage = props => {
           />
         </div>
       </div>
+      {<span style={{ color: "red" }}>{errorCallBack}</span>}
       <Collapsible className="people-collaps" trigger={labelForCollaps()}>
         <div className="row">
           <div className="col m6 s12">
@@ -135,7 +141,6 @@ const WizardFormThirdPage = props => {
           </div>
         </div>
       </Collapsible>
-
       <div className="row">
         <button
           type="button"
@@ -144,7 +149,7 @@ const WizardFormThirdPage = props => {
         >
           Previous
         </button>
-        <button type="submit" className="next btn right">
+        <button onClick={errorCall} type="submit" className="next btn right">
           Next
         </button>
       </div>

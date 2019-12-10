@@ -21,7 +21,7 @@ const renderFieldPhone = ({
         placeholder={label}
         type={type}
       />
-      <span className="asterik-time">Ex: +1 (786) 234-435-7896</span>
+      <span className="asterik-time">Ex: +1 (786) 212-7896</span>
       {touched && error && <span className="error-color">{error}</span>}
     </div>
   </div>
