@@ -19,8 +19,6 @@ const WizardFormThirdPage = props => {
     handleOnChange,
     value,
     pristine,
-    errorCallBack,
-    FunctionErrorCallBack,
     reset,
     submitting
   } = props;
@@ -41,6 +39,12 @@ const WizardFormThirdPage = props => {
         placeholder="Click on the Lock"
       />
       <span className="asterik-time">*Eastern Standard Time</span>
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
+  );
+
+  const renderError = ({ meta: { touched, error } }) => (
+    <div>
       {touched && error && <span className="error-color">{error}</span>}
     </div>
   );
@@ -72,13 +76,6 @@ const WizardFormThirdPage = props => {
         <i className="far fa-clock"></i> Time to be call
       </div>
     );
-  };
-
-  const errorCall = form => {
-    console.log(form);
-    if (props.valid === false) {
-      FunctionErrorCallBack();
-    }
   };
 
   return (
@@ -120,7 +117,8 @@ const WizardFormThirdPage = props => {
           />
         </div>
       </div>
-      {<span style={{ color: "red" }}>{errorCallBack}</span>}
+      <Field name="timeCall" component={renderError} />
+      <Field name="dateCall" component={renderError} />
       <Collapsible className="people-collaps" trigger={labelForCollaps()}>
         <div className="row">
           <div className="col m6 s12">
@@ -149,7 +147,7 @@ const WizardFormThirdPage = props => {
         >
           Previous
         </button>
-        <button onClick={errorCall} type="submit" className="next btn right">
+        <button type="submit" className="next btn right">
           Next
         </button>
       </div>

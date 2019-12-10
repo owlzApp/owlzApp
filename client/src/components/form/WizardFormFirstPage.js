@@ -132,6 +132,14 @@ const WizardFormFirstPage = props => {
       <div className="row">
         <div className="col m6 s12">
           <label>People</label>
+          <Field
+            name="people"
+            type="number"
+            component={renderFieldCountTotal}
+            label="People"
+            value={value}
+            validate={valueError}
+          />
           <Collapsible
             className="people-collaps"
             trigger={`Number of person: ${value}`}
@@ -149,14 +157,6 @@ const WizardFormFirstPage = props => {
               component={renderFieldCount}
               label="Male"
               onChange={handleOnChangeMale}
-            />
-            <Field
-              name="people"
-              type="number"
-              component={renderFieldCountTotal}
-              label="People"
-              value={value}
-              validate={valueError}
             />
           </Collapsible>
         </div>

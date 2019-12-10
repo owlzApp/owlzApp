@@ -22,7 +22,6 @@ class WizardForm extends Component {
       color: "item-active",
       phone: "",
       errorPhone: "",
-      errorCallBack: "",
       countFemale: 0,
       countMale: 0,
       CountTotal: 0,
@@ -66,17 +65,9 @@ class WizardForm extends Component {
     }
   };
 
-  FunctionErrorCallBack = () => {
-    this.setState({
-      errorCallBack: "Please Check the form something missing..."
-    });
-  };
-
   nextPage(form) {
     this.setState({ finalValue: form });
     this.setState({ page: this.state.page + 1 });
-    this.setState({ errorCallBack: "" });
-    console.log(form);
   }
 
   previousPage() {
@@ -143,8 +134,6 @@ class WizardForm extends Component {
                     handleOnChange={this.handleOnChange}
                     value={this.state.phone}
                     errorPhone={this.state.errorPhone}
-                    errorCallBack={this.state.errorCallBack}
-                    FunctionErrorCallBack={this.FunctionErrorCallBack}
                   />
                 </ScrollAnimation>
               )}
