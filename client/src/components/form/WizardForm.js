@@ -20,14 +20,14 @@ class WizardForm extends Component {
     this.state = {
       page: 1,
       color: "item-active",
-      phone: "",
-      errorPhone: "",
       countFemale: 0,
       countMale: 0,
+      startDate: "",
       CountTotal: 0,
       finalValue: []
     };
   }
+
   componentDidMount() {
     const elemCollapsible = document.querySelectorAll(".collapsible");
     M.Collapsible.init(elemCollapsible, {});
@@ -37,6 +37,10 @@ class WizardForm extends Component {
 
   handleOnChange = value => {
     this.setState({ phone: value });
+  };
+
+  alertWhenChanged = value => {
+    this.setState({ startDate: value });
   };
 
   handleOnChangeCountFemale = value => {
@@ -68,6 +72,7 @@ class WizardForm extends Component {
   nextPage(form) {
     this.setState({ finalValue: form });
     this.setState({ page: this.state.page + 1 });
+    console.log(form);
   }
 
   previousPage() {
@@ -114,6 +119,8 @@ class WizardForm extends Component {
                     handleOnChangeFemale={this.handleOnChangeCountFemale}
                     handleOnChangeMale={this.handleOnChangeCountMale}
                     value={this.state.CountTotal}
+                    alertWhenChanged={this.alertWhenChanged}
+                    startDate={this.state.startDate}
                   />
                 </ScrollAnimation>
               )}
@@ -131,9 +138,6 @@ class WizardForm extends Component {
                   <WizardFormThirdPage
                     previousPage={this.previousPage}
                     onSubmit={this.nextPage}
-                    handleOnChange={this.handleOnChange}
-                    value={this.state.phone}
-                    errorPhone={this.state.errorPhone}
                   />
                 </ScrollAnimation>
               )}

@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize.min.js';
-import 'materialize-social/materialize-social.css'
+import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize.min.js";
+import "materialize-social/materialize-social.css";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
@@ -18,7 +18,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-      <App />
+    <App />
   </Provider>,
   document.getElementById("root")
 );

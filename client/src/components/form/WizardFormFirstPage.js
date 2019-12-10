@@ -8,78 +8,9 @@ import momentLocalizer from "react-widgets-moment";
 import "react-widgets/dist/css/react-widgets.css";
 import NumericInput from "react-numeric-input";
 import Collapsible from "react-collapsible";
-
+// import DateRangePickerField from "./DateRangePickerField";
 const interests = ["Miami"];
 momentLocalizer(moment);
-
-const renderDateTimePicker = ({
-  input: { onChange, value },
-  meta: { touched, error },
-  label
-}) => (
-  <div>
-    <label>{label}</label>
-    <DateTimePicker
-      onChange={onChange}
-      format="DD MMM YYYY"
-      time={false}
-      min={moment().toDate()}
-      value={!value ? null : new Date(value)}
-      placeholder="Click on the Calendar"
-    />
-    {touched && error && <span className="error-color">{error}</span>}
-  </div>
-);
-
-const renderFieldCount = ({ input, label, type }) => (
-  <div className="block-collaps">
-    <label style={{ display: "block" }} className="center">
-      {label}
-    </label>
-    <div>
-      <NumericInput
-        mobile
-        className="form-control"
-        min={0}
-        max={100}
-        {...input}
-        type={type}
-      />
-    </div>
-  </div>
-);
-
-const renderFieldCountTotal = ({
-  input,
-  label,
-  value,
-  type,
-  meta: { touched, error }
-}) => (
-  <div>
-    <div {...input} value={value} placeholder={label} type={type}>
-      {value}
-    </div>
-    <div>
-      {touched && error && <span className="error-color">{error}</span>}
-    </div>
-  </div>
-);
-
-const renderCitySelector = ({ input, label, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <select {...input}>
-      <option value="">Select your city...</option>
-      {interests.map(val => (
-        <option value={val} key={val}>
-          {val}
-        </option>
-      ))}
-    </select>
-    {touched && error && <span className="error-color">{error}</span>}
-  </div>
-);
 
 const WizardFormFirstPage = props => {
   const {
@@ -89,7 +20,9 @@ const WizardFormFirstPage = props => {
     submitting,
     value,
     handleOnChangeFemale,
-    handleOnChangeMale
+    handleOnChangeMale,
+    alertWhenChanged,
+    startDate
   } = props;
 
   const valueError = () => {
@@ -97,6 +30,95 @@ const WizardFormFirstPage = props => {
       return <div className="error-color-count">minimum one person</div>;
     }
   };
+  const renderDateTimePicker = ({
+    input: { onChange, value },
+    meta: { touched, error },
+    label
+  }) => (
+    <div>
+      <label>{label}</label>
+      <DateTimePicker
+        onChange={onChange}
+        onSelect={alertWhenChanged(value)}
+        format="DD MMM YYYY"
+        time={false}
+        min={moment().toDate()}
+        value={!value ? null : new Date(value)}
+        placeholder="Click on the Calendar"
+      />
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
+  );
+
+  const renderEndDateTimePicker = ({
+    input: { onChange, value },
+    meta: { touched, error },
+    startDate,
+    label
+  }) => (
+    <div>
+      <label>{label}</label>
+      <DateTimePicker
+        onChange={onChange}
+        format="DD MMM YYYY"
+        time={false}
+        min={startDate === undefined ? null : new Date(startDate)}
+        value={!value ? null : new Date(value)}
+        placeholder="Click on the Calendar"
+      />
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
+  );
+
+  const renderFieldCount = ({ input, label, type }) => (
+    <div className="block-collaps">
+      <label style={{ display: "block" }} className="center">
+        {label}
+      </label>
+      <div>
+        <NumericInput
+          mobile
+          className="form-control"
+          min={0}
+          max={100}
+          {...input}
+          type={type}
+        />
+      </div>
+    </div>
+  );
+
+  const renderFieldCountTotal = ({
+    input,
+    label,
+    value,
+    type,
+    meta: { touched, error }
+  }) => (
+    <div>
+      <div {...input} value={value} placeholder={label} type={type}>
+        {value}
+      </div>
+      <div>
+        {touched && error && <span className="error-color">{error}</span>}
+      </div>
+    </div>
+  );
+
+  const renderCitySelector = ({ input, label, meta: { touched, error } }) => (
+    <div>
+      <label>{label}</label>
+      <select {...input}>
+        <option value="">Select your city...</option>
+        {interests.map(val => (
+          <option value={val} key={val}>
+            {val}
+          </option>
+        ))}
+      </select>
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
+  );
 
   return (
     <form onSubmit={handleSubmit}>
@@ -112,6 +134,7 @@ const WizardFormFirstPage = props => {
         <div className="col m6 s12"></div>
       </div>
       <div className="row">
+        {/* <Field component={DateRangePickerField} /> */}
         <div className="col m6 s12">
           <Field
             name="date"
@@ -125,7 +148,8 @@ const WizardFormFirstPage = props => {
             name="dateEnd"
             label="Date Ending"
             showTime={false}
-            component={renderDateTimePicker}
+            startDate={startDate}
+            component={renderEndDateTimePicker}
           />
         </div>
       </div>

@@ -23,37 +23,29 @@ const WizardFormThirdPage = props => {
     submitting
   } = props;
 
-  const renderDateTime = ({
-    input: { onChange },
-    meta: { touched, error },
-    label
-  }) => (
+  const renderDateTime = ({ input: { onChange, value }, label }) => (
     <div className="block-collaps">
       <label>Step 1:</label>
       <br></br>
       <label>{label}</label>
       <DateTimePicker
+        value={!value ? null : new Date(value)}
         date={false}
         onChange={onChange}
         step={30}
         placeholder="Click on the Lock"
       />
       <span className="asterik-time">*Eastern Standard Time</span>
-      {touched && error && <span className="error-color">{error}</span>}
     </div>
   );
 
   const renderError = ({ meta: { touched, error } }) => (
-    <div>
+    <div className="">
       {touched && error && <span className="error-color">{error}</span>}
     </div>
   );
 
-  const renderDateTimePicker = ({
-    input: { onChange, value },
-    meta: { touched, error },
-    label
-  }) => (
+  const renderDateTimePicker = ({ input: { onChange, value }, label }) => (
     <div className="block-collaps">
       <label>Step 2:</label>
       <br></br>
@@ -66,7 +58,6 @@ const WizardFormThirdPage = props => {
         value={!value ? null : new Date(value)}
         placeholder="Click on the Calendar"
       />
-      {touched && error && <span className="error-color">{error}</span>}
     </div>
   );
 

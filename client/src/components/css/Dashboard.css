@@ -55,9 +55,9 @@
   background: linear-gradient(to right, #93F9B9, #1D976C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-table {
+/* table {
   margin: 20px 0px !important;
-}
+} */
 
 .canvasjs-chart-credit{
   display: none !important;
