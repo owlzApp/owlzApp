@@ -9,8 +9,7 @@ const WizardFormFourthPage = props => {
     pristine,
     previousPage,
     submitting,
-    FinalValue,
-    reset
+    FinalValue
   } = props;
 
   let date = props.FinalValue.date;

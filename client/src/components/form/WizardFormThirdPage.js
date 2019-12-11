@@ -98,7 +98,7 @@ const WizardFormThirdPage = props => {
           <i class={`fas ${arrowCall}`}></i>
         </div>
         <div className="center">
-          <i className="far fa-clock"></i> Time to be call
+          <i className="far fa-clock"></i> Schedule call with Owlz Liaison
         </div>
       </div>
     );
