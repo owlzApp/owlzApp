@@ -22,24 +22,49 @@ class WizardForm extends Component {
       color: "item-active",
       countFemale: 0,
       countMale: 0,
-      startDate: "",
+      startDate: new Date(),
       CountTotal: 0,
-      finalValue: []
+      finalValue: [],
+      openEnd: "false",
+      open: "false",
+      arrow: "fa-sort-down",
+      arrowCall: "fa-sort-down"
     };
   }
 
   componentDidMount() {
     const elemCollapsible = document.querySelectorAll(".collapsible");
     M.Collapsible.init(elemCollapsible, {});
+
     const elems = document.querySelectorAll(".datepicker");
     M.Datepicker.init(elems, {});
   }
 
-  handleOnChange = value => {
-    this.setState({ phone: value });
+  handleInputClick = event => {
+    if (event.target.tagName === "INPUT") {
+      this.setState({ open: "date" });
+    }
   };
 
-  alertWhenChanged = value => {
+  handleInputClickEnd = event => {
+    if (event.target.tagName === "INPUT") {
+      this.setState({ openEnd: "date" });
+    }
+  };
+
+  handleToggle = () => {
+    var toggledState = this.state.open ? false : "date";
+    this.setState({ open: toggledState });
+    this.setState({ openEnd: "date" });
+  };
+
+  handleToggleEnd = () => {
+    var toggledState = this.state.openEnd ? false : "date";
+    this.setState({ openEnd: toggledState });
+    this.setState({ open: "false" });
+  };
+
+  whenSeletedDate = value => {
     this.setState({ startDate: value });
   };
 
@@ -51,6 +76,40 @@ class WizardForm extends Component {
   handleOnChangeCountMale = value => {
     this.setState({ countMale: value });
     this.setState({ CountTotal: this.state.countFemale + value });
+  };
+
+  // Input Call back Page 3
+  handleInputClickEndTime = event => {
+    if (event.target.tagName === "INPUT") {
+      this.setState({ openEnd: "time" });
+    }
+  };
+
+  handleToggleTime = () => {
+    var toggledState = this.state.open ? false : "date";
+    this.setState({ open: toggledState });
+    this.setState({ openEnd: "time" });
+  };
+
+  arrowMove = () => {
+    if (this.state.arrow === "fa-sort-down") {
+      this.setState({ arrow: "fa-sort-up" });
+    } else {
+      this.setState({ arrow: "fa-sort-down" });
+    }
+  };
+
+  arrowMoveTime = () => {
+    if (this.state.arrowCall === "fa-sort-down") {
+      this.setState({ arrowCall: "fa-sort-up" });
+    } else {
+      this.setState({ arrowCall: "fa-sort-down" });
+    }
+  };
+
+  //Input Phone page 3
+  handleOnChange = value => {
+    this.setState({ phone: value });
   };
 
   renderProgressBar = () => {
@@ -119,8 +178,16 @@ class WizardForm extends Component {
                     handleOnChangeFemale={this.handleOnChangeCountFemale}
                     handleOnChangeMale={this.handleOnChangeCountMale}
                     value={this.state.CountTotal}
-                    alertWhenChanged={this.alertWhenChanged}
+                    whenSeletedDate={this.whenSeletedDate}
                     startDate={this.state.startDate}
+                    handleInputClick={this.handleInputClick}
+                    handleToggle={this.handleToggle}
+                    handleToggleEnd={this.handleToggleEnd}
+                    handleInputClickEnd={this.handleInputClickEnd}
+                    open={this.state.open}
+                    openEnd={this.state.openEnd}
+                    arrowMove={this.arrowMove}
+                    arrow={this.state.arrow}
                   />
                 </ScrollAnimation>
               )}
@@ -138,6 +205,14 @@ class WizardForm extends Component {
                   <WizardFormThirdPage
                     previousPage={this.previousPage}
                     onSubmit={this.nextPage}
+                    handleInputClick={this.handleInputClick}
+                    open={this.state.open}
+                    handleInputClickEndTime={this.handleInputClickEndTime}
+                    handleToggleTime={this.handleToggleTime}
+                    handleToggleEnd={this.handleToggleEnd}
+                    openEnd={this.state.openEnd}
+                    arrowMoveTime={this.arrowMoveTime}
+                    arrowCall={this.state.arrowCall}
                   />
                 </ScrollAnimation>
               )}

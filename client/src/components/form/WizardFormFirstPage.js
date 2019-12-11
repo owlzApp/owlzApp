@@ -8,7 +8,6 @@ import momentLocalizer from "react-widgets-moment";
 import "react-widgets/dist/css/react-widgets.css";
 import NumericInput from "react-numeric-input";
 import Collapsible from "react-collapsible";
-// import DateRangePickerField from "./DateRangePickerField";
 const interests = ["Miami"];
 momentLocalizer(moment);
 
@@ -21,8 +20,16 @@ const WizardFormFirstPage = props => {
     value,
     handleOnChangeFemale,
     handleOnChangeMale,
-    alertWhenChanged,
-    startDate
+    whenSeletedDate,
+    startDate,
+    handleInputClick,
+    handleToggle,
+    handleToggleEnd,
+    handleInputClickEnd,
+    open,
+    openEnd,
+    arrowMove,
+    arrow
   } = props;
 
   const valueError = () => {
@@ -33,18 +40,24 @@ const WizardFormFirstPage = props => {
   const renderDateTimePicker = ({
     input: { onChange, value },
     meta: { touched, error },
-    label
+    label,
+    handleInputClick,
+    handleToggle,
+    open
   }) => (
     <div>
       <label>{label}</label>
       <DateTimePicker
         onChange={onChange}
-        onSelect={alertWhenChanged(value)}
+        onSelect={whenSeletedDate(value)}
         format="DD MMM YYYY"
+        onClick={handleInputClick}
+        onToggle={handleToggle}
+        open={open}
         time={false}
         min={moment().toDate()}
         value={!value ? null : new Date(value)}
-        placeholder="Click on the Calendar"
+        placeholder="24 Dec 2019"
       />
       {touched && error && <span className="error-color">{error}</span>}
     </div>
@@ -54,7 +67,10 @@ const WizardFormFirstPage = props => {
     input: { onChange, value },
     meta: { touched, error },
     startDate,
-    label
+    openEnd,
+    label,
+    handleInputClickEnd,
+    handleToggleEnd
   }) => (
     <div>
       <label>{label}</label>
@@ -62,9 +78,12 @@ const WizardFormFirstPage = props => {
         onChange={onChange}
         format="DD MMM YYYY"
         time={false}
+        onClick={handleInputClickEnd}
+        onToggle={handleToggleEnd}
+        open={openEnd}
         min={startDate === undefined ? null : new Date(startDate)}
         value={!value ? null : new Date(value)}
-        placeholder="Click on the Calendar"
+        placeholder="25 Dec 2019"
       />
       {touched && error && <span className="error-color">{error}</span>}
     </div>
@@ -120,6 +139,17 @@ const WizardFormFirstPage = props => {
     </div>
   );
 
+  const renderTitleCollaps = (value, arrow) => {
+    return (
+      <div className="box-collaps" onClick={arrowMove}>
+        <div className="right">
+          <i class={`fas ${arrow}`}></i>
+        </div>
+        <div>Number of person: {value}</div>
+      </div>
+    );
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
@@ -134,28 +164,33 @@ const WizardFormFirstPage = props => {
         <div className="col m6 s12"></div>
       </div>
       <div className="row">
-        {/* <Field component={DateRangePickerField} /> */}
         <div className="col m6 s12">
           <Field
             name="date"
-            label="Date Arrive"
+            label="Arrival"
             showTime={false}
             component={renderDateTimePicker}
+            handleInputClick={handleInputClick}
+            handleToggle={handleToggle}
+            open={open}
           />
         </div>
         <div className="col m6 s12">
           <Field
             name="dateEnd"
-            label="Date Ending"
+            label="Departure"
             showTime={false}
             startDate={startDate}
             component={renderEndDateTimePicker}
+            handleInputClickEnd={handleInputClickEnd}
+            handleToggleEnd={handleToggleEnd}
+            openEnd={openEnd}
           />
         </div>
       </div>
       <div className="row">
         <div className="col m6 s12">
-          <label>People</label>
+          <label>Guest</label>
           <Field
             name="people"
             type="number"
@@ -164,10 +199,7 @@ const WizardFormFirstPage = props => {
             value={value}
             validate={valueError}
           />
-          <Collapsible
-            className="people-collaps"
-            trigger={`Number of person: ${value}`}
-          >
+          <Collapsible trigger={renderTitleCollaps(value, arrow)}>
             <Field
               name="peopleFemale"
               type="number"

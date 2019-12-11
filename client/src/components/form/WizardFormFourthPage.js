@@ -9,7 +9,8 @@ const WizardFormFourthPage = props => {
     pristine,
     previousPage,
     submitting,
-    FinalValue
+    FinalValue,
+    reset
   } = props;
 
   let date = props.FinalValue.date;
@@ -86,7 +87,7 @@ const WizardFormFourthPage = props => {
 };
 export default reduxForm({
   form: "wizard", //Form name is same
-  destroyOnUnmount: false,
+  destroyOnUnmount: true,
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate
 })(WizardFormFourthPage);

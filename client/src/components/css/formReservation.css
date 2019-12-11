@@ -99,6 +99,12 @@ display: block;
 padding: 10px;
 }
 
+.box-collaps{
+  padding: 10px;
+  border: 1px solid #d4af37;
+  border-radius: 4px;
+}
+
 .is-open{
   cursor: pointer;
 }
@@ -139,6 +145,17 @@ select {
 input[type="checkbox"]:not(:checked), input[type="checkbox"]:checked {
   opacity: 1 !important;
 }
+/* Input date */
+.rw-calendar-btn-view {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.rw-widget-picker>.rw-select {
+  display: none;
+}
+
+
 
 .reservation{
  margin-top: 40px;

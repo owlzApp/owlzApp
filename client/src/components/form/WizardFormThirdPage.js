@@ -20,18 +20,60 @@ const WizardFormThirdPage = props => {
     value,
     pristine,
     reset,
-    submitting
+    submitting,
+    arrowCall,
+    arrowMoveTime,
+    handleInputClick,
+    open,
+    handleInputClickEndTime,
+    handleToggleEnd,
+    handleToggleTime,
+    openEnd
   } = props;
 
-  const renderDateTime = ({ input: { onChange, value }, label }) => (
+  const renderDateTimePicker = ({
+    input: { onChange, value },
+    label,
+    open,
+    handleInputClick,
+    handleToggleTime
+  }) => (
     <div className="block-collaps">
       <label>Step 1:</label>
       <br></br>
       <label>{label}</label>
       <DateTimePicker
+        onChange={onChange}
+        onClick={handleInputClick}
+        onToggle={handleToggleTime}
+        open={open}
+        format="DD MMM YYYY"
+        time={false}
+        min={moment().toDate()}
+        value={!value ? null : new Date(value)}
+        placeholder="Click on the Calendar"
+      />
+    </div>
+  );
+
+  const renderDateTime = ({
+    input: { onChange, value },
+    label,
+    handleInputClickEndTime,
+    handleToggleEnd,
+    openEnd
+  }) => (
+    <div className="block-collaps">
+      <label>Step 2:</label>
+      <br></br>
+      <label>{label}</label>
+      <DateTimePicker
+        onChange={onChange}
+        onClick={handleInputClickEndTime}
+        onToggle={handleToggleEnd}
+        open={openEnd}
         value={!value ? null : new Date(value)}
         date={false}
-        onChange={onChange}
         step={30}
         placeholder="Click on the Lock"
       />
@@ -45,26 +87,19 @@ const WizardFormThirdPage = props => {
     </div>
   );
 
-  const renderDateTimePicker = ({ input: { onChange, value }, label }) => (
-    <div className="block-collaps">
-      <label>Step 2:</label>
-      <br></br>
-      <label>{label}</label>
-      <DateTimePicker
-        onChange={onChange}
-        format="DD MMM YYYY"
-        time={false}
-        min={moment().toDate()}
-        value={!value ? null : new Date(value)}
-        placeholder="Click on the Calendar"
-      />
-    </div>
-  );
-
-  const labelForCollaps = () => {
+  const labelForCollaps = arrowCall => {
     return (
-      <div style={{ color: "#d4af37" }} className="center">
-        <i className="far fa-clock"></i> Time to be call
+      <div
+        style={{ color: "#d4af37", marginBottom: "40px" }}
+        className="box-collaps"
+        onClick={arrowMoveTime}
+      >
+        <div className="right">
+          <i class={`fas ${arrowCall}`}></i>
+        </div>
+        <div className="center">
+          <i className="far fa-clock"></i> Time to be call
+        </div>
       </div>
     );
   };
@@ -110,22 +145,28 @@ const WizardFormThirdPage = props => {
       </div>
       <Field name="timeCall" component={renderError} />
       <Field name="dateCall" component={renderError} />
-      <Collapsible className="people-collaps" trigger={labelForCollaps()}>
+      <Collapsible trigger={labelForCollaps(arrowCall)}>
         <div className="row">
-          <div className="col m6 s12">
-            <Field
-              name="timeCall"
-              label="Time you want to be call"
-              date={false}
-              component={renderDateTime}
-            />
-          </div>
           <div className="col m6 s12">
             <Field
               name="dateCall"
               label="Date you want to be call"
               date={false}
               component={renderDateTimePicker}
+              open={open}
+              handleInputClick={handleInputClick}
+              handleToggleTime={handleToggleTime}
+            />
+          </div>
+          <div className="col m6 s12">
+            <Field
+              name="timeCall"
+              label="Time you want to be call"
+              date={false}
+              component={renderDateTime}
+              openEnd={openEnd}
+              handleInputClickEndTime={handleInputClickEndTime}
+              handleToggleEnd={handleToggleEnd}
             />
           </div>
         </div>
