@@ -51,7 +51,7 @@ const WizardFormThirdPage = props => {
         time={false}
         min={moment().toDate()}
         value={!value ? null : new Date(value)}
-        placeholder="Click on the Calendar"
+        placeholder="25 Dec 2019"
       />
     </div>
   );
@@ -75,7 +75,7 @@ const WizardFormThirdPage = props => {
         value={!value ? null : new Date(value)}
         date={false}
         step={30}
-        placeholder="Click on the Lock"
+        placeholder="11:30 AM"
       />
       <span className="asterik-time">*Eastern Standard Time</span>
     </div>

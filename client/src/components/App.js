@@ -43,7 +43,7 @@ class App extends React.Component {
               <Route exact path="/user/edit/:id" component={UserEdit} />
             </div>
           ) : (
-            "Access refused, Must be connecting with owlz Admin"
+            ""
           )}
         </BrowserRouter>
       </div>
