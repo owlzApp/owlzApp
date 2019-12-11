@@ -32,7 +32,7 @@ const WizardFormFirstPage = props => {
     arrow
   } = props;
 
-  const valueError = () => {
+  const valueError = value => {
     if (value === 0) {
       return <div className="error-color-count">minimum one person</div>;
     }
