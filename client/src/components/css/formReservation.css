@@ -64,6 +64,36 @@ input:focus:not([readonly]){
   color:  #d4af37 !important;
 }
 
+/* Counter */
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  width: 50px;
+}
+.box-guest{
+  display: flex;
+}
+
+.box-input-counter{
+  display: inline;
+}
+.hidden b{
+  display: none !important;
+}
+
+.hidden input.form-control {
+  padding-right: 0px !important;
+  display: flex !important;
+  width: 20px !important;
+  font-size: inherit !important;
+  padding-left: 0px !important;
+  text-align: none !important;
+}
+
 .rw-widget-container {
   border: none !important;
   margin-top: 10px;

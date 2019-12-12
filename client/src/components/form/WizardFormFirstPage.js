@@ -106,7 +106,73 @@ const WizardFormFirstPage = props => {
           type={type}
         />
       </div>
-      <div> This is your value {}</div>
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
+  );
+
+  const renderFieldCountFemale = ({
+    input,
+    type,
+    meta: { error, touched }
+  }) => (
+    <div className="box-input-counter">
+      <div className="hidden">
+        <NumericInput
+          mobile
+          className="form-control"
+          min={0}
+          max={100}
+          {...input}
+          type={type}
+        />
+        <div>women</div>
+      </div>
+      {touched && error && <span className="error-color">{error}</span>}
+    </div>
+  );
+
+  const renderTitleCollaps = (value, arrow) => {
+    return (
+      <div onClick={arrowMove}>
+        <div className="right">
+          <i class={`fas ${arrow}`}></i>
+        </div>
+        <div class="flex-container">
+          <div>Number of person:</div>
+          <div>
+            <Field
+              name="peopleFemale"
+              type="number"
+              component={renderFieldCountFemale}
+              label="Female"
+              onChange={handleOnChangeFemale}
+            />
+            <Field
+              name="peopleMale"
+              type="number"
+              component={renderFieldCountMale}
+              label="Male"
+              onChange={handleOnChangeMale}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderFieldCountMale = ({ input, type, meta: { error, touched } }) => (
+    <div>
+      <div className="hidden">
+        <NumericInput
+          mobile
+          className="form-control"
+          min={0}
+          max={100}
+          {...input}
+          type={type}
+        />
+        Men
+      </div>
       {touched && error && <span className="error-color">{error}</span>}
     </div>
   );
@@ -125,17 +191,6 @@ const WizardFormFirstPage = props => {
       {touched && error && <span className="error-color">{error}</span>}
     </div>
   );
-
-  const renderTitleCollaps = (value, arrow) => {
-    return (
-      <div className="box-collaps" onClick={arrowMove}>
-        <div className="right">
-          <i class={`fas ${arrow}`}></i>
-        </div>
-        <div>Number of person: {value}</div>
-      </div>
-    );
-  };
 
   return (
     <form onSubmit={handleSubmit}>
