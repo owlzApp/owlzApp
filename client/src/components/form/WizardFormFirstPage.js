@@ -18,8 +18,6 @@ const WizardFormFirstPage = props => {
     reset,
     submitting,
     value,
-    countFemale,
-    countMale,
     handleOnChangeFemale,
     handleOnChangeMale,
     whenSeletedDate,
@@ -106,30 +104,23 @@ const WizardFormFirstPage = props => {
           type={type}
         />
       </div>
-      {touched && error && <span className="error-color">{error}</span>}
+      {touched && error && <span className="error-color"> {error}</span>}
     </div>
   );
 
-  const renderFieldCountFemale = ({
-    input,
-    type,
-    meta: { error, touched }
-  }) => (
-    <div className="box-input-counter">
-      <div className="hidden">
-        <NumericInput
-          mobile
-          className="form-control"
-          min={0}
-          max={100}
-          {...input}
-          type={type}
-        />
-        <div>women</div>
-      </div>
-      {touched && error && <span className="error-color">{error}</span>}
+  const renderError = ({ meta: { error, touched } }) => (
+    <div>
+      {touched && error && <span className="error-color"> {error}</span>}
     </div>
   );
+
+  const renderTotalValue = value => {
+    if (value === 0) {
+      return <span></span>;
+    } else {
+      return value;
+    }
+  };
 
   const renderTitleCollaps = (value, arrow) => {
     return (
@@ -138,44 +129,11 @@ const WizardFormFirstPage = props => {
           <i class={`fas ${arrow}`}></i>
         </div>
         <div class="flex-container">
-          <div>Number of person:</div>
-          <div>
-            <Field
-              name="peopleFemale"
-              type="number"
-              component={renderFieldCountFemale}
-              label="Female"
-              onChange={handleOnChangeFemale}
-            />
-            <Field
-              name="peopleMale"
-              type="number"
-              component={renderFieldCountMale}
-              label="Male"
-              onChange={handleOnChangeMale}
-            />
-          </div>
+          <div>Number: {renderTotalValue(value)}</div>
         </div>
       </div>
     );
   };
-
-  const renderFieldCountMale = ({ input, type, meta: { error, touched } }) => (
-    <div>
-      <div className="hidden">
-        <NumericInput
-          mobile
-          className="form-control"
-          min={0}
-          max={100}
-          {...input}
-          type={type}
-        />
-        Men
-      </div>
-      {touched && error && <span className="error-color">{error}</span>}
-    </div>
-  );
 
   const renderCitySelector = ({ input, label, meta: { touched, error } }) => (
     <div>
@@ -233,7 +191,11 @@ const WizardFormFirstPage = props => {
       <div className="row">
         <div className="col m6 s12">
           <label>Guest</label>
-          <Collapsible trigger={renderTitleCollaps(value, arrow)}>
+          <Field name="peopleFemale" component={renderError} />
+          <Collapsible
+            className="box-collaps"
+            trigger={renderTitleCollaps(value, arrow)}
+          >
             <Field
               name="peopleFemale"
               type="number"

@@ -20,12 +20,16 @@ const validate = values => {
     errors.interest = "Required";
   }
 
-  if (!values.peopleFemale) {
+  if (!values.peopleMale && !values.peopleFemale) {
+    errors.peopleMale = "Required";
+  }
+
+  if (!values.peopleFemale && !values.peopleMale) {
     errors.peopleFemale = "Required";
   }
 
-  if (!values.peopleMale) {
-    errors.peopleMale = "Required";
+  if (values.peopleFemale <= 0 && values.peopleMale <= 0) {
+    errors.peopleFemale = "Required";
   }
 
   if (!values.date) {

@@ -67,20 +67,17 @@ input:focus:not([readonly]){
 /* Counter */
 .flex-container {
   display: flex;
-  flex-wrap: nowrap;
-  background-color: DodgerBlue;
+  flex-wrap: wrap;
 }
 
 .flex-container > div {
-  width: 50px;
-}
-.box-guest{
-  display: flex;
+  width: auto;
 }
 
-.box-input-counter{
-  display: inline;
+.hidden{
+  display: inline-flex;
 }
+
 .hidden b{
   display: none !important;
 }
@@ -89,6 +86,8 @@ input:focus:not([readonly]){
   padding-right: 0px !important;
   display: flex !important;
   width: 20px !important;
+  height: 13px !important;
+  margin: 5px 0 0px 0 !important;
   font-size: inherit !important;
   padding-left: 0px !important;
   text-align: none !important;
