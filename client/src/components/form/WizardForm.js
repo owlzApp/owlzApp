@@ -78,6 +78,10 @@ class WizardForm extends Component {
     this.setState({ CountTotal: this.state.countFemale + value });
   };
 
+  handleOnChangeTotal = value => {
+    this.setState({ CountTotal: value });
+  };
+
   // Input Call back Page 3
   handleInputClickEndTime = event => {
     if (event.target.tagName === "INPUT") {
@@ -177,6 +181,9 @@ class WizardForm extends Component {
                     onSubmit={this.nextPage}
                     handleOnChangeFemale={this.handleOnChangeCountFemale}
                     handleOnChangeMale={this.handleOnChangeCountMale}
+                    handleOnChangeTotal={this.handleOnChangeTotal}
+                    countFemale={this.state.countFemale}
+                    countMale={this.state.countMale}
                     value={this.state.CountTotal}
                     whenSeletedDate={this.whenSeletedDate}
                     startDate={this.state.startDate}

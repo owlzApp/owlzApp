@@ -18,6 +18,8 @@ const WizardFormFirstPage = props => {
     reset,
     submitting,
     value,
+    countFemale,
+    countMale,
     handleOnChangeFemale,
     handleOnChangeMale,
     whenSeletedDate,
@@ -32,11 +34,6 @@ const WizardFormFirstPage = props => {
     arrow
   } = props;
 
-  const valueError = value => {
-    if (value === 0) {
-      return <div className="error-color-count">minimum one person</div>;
-    }
-  };
   const renderDateTimePicker = ({
     input: { onChange, value },
     meta: { touched, error },
@@ -89,7 +86,12 @@ const WizardFormFirstPage = props => {
     </div>
   );
 
-  const renderFieldCount = ({ input, label, type }) => (
+  const renderFieldCount = ({
+    input,
+    label,
+    type,
+    meta: { error, touched }
+  }) => (
     <div className="block-collaps">
       <label style={{ display: "block" }} className="center">
         {label}
@@ -104,23 +106,8 @@ const WizardFormFirstPage = props => {
           type={type}
         />
       </div>
-    </div>
-  );
-
-  const renderFieldCountTotal = ({
-    input,
-    label,
-    value,
-    type,
-    meta: { touched, error }
-  }) => (
-    <div>
-      <div {...input} value={value} placeholder={label} type={type}>
-        {value}
-      </div>
-      <div>
-        {touched && error && <span className="error-color">{error}</span>}
-      </div>
+      <div> This is your value {}</div>
+      {touched && error && <span className="error-color">{error}</span>}
     </div>
   );
 
@@ -191,14 +178,6 @@ const WizardFormFirstPage = props => {
       <div className="row">
         <div className="col m6 s12">
           <label>Guest</label>
-          <Field
-            name="people"
-            type="number"
-            component={renderFieldCountTotal}
-            label="People"
-            value={value}
-            validate={valueError}
-          />
           <Collapsible trigger={renderTitleCollaps(value, arrow)}>
             <Field
               name="peopleFemale"

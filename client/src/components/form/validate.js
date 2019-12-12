@@ -20,6 +20,14 @@ const validate = values => {
     errors.interest = "Required";
   }
 
+  if (!values.peopleFemale) {
+    errors.peopleFemale = "Required";
+  }
+
+  if (!values.peopleMale) {
+    errors.peopleMale = "Required";
+  }
+
   if (!values.date) {
     errors.date = "Required select one date";
   }
@@ -41,9 +49,6 @@ const validate = values => {
 
   if (!values.city) {
     errors.city = "Required";
-  }
-  if (!values.gender) {
-    errors.gender = "Required";
   }
   return errors;
 };
