@@ -1,4 +1,11 @@
+const moment = require("moment");
+
 module.exports = body => {
+  const dateStart = moment(body.date).format("LL");
+  const dateEnd = moment(body.dateEnd).format("LL");
+  const dateCall = moment(body.dateCall).format("LL");
+  const dateTimeCall = moment(body.dateTimeCall).format("LT");
+
   return `
   <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
   <head>
@@ -152,11 +159,11 @@ module.exports = body => {
                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif"><![endif]-->
                         <div style="color:#989898;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
                           <div style="font-size: 12px; line-height: 1.2; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #989898; mso-line-height-alt: 14px;">
-                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Start date ${body.date} And Ending date ${body.dateEnd}</p>
-                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Number of People: ${body.people} including ${body.peopleFemale} Women -  ${body.peopleMale} Man</p>
-                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Interest: ${body.interest}</p>
-                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Message: ${body.message}</p>
-                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;">Time and date to be call: At ${body.timeCall} on the ${body.dateCall} </p>
+                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;"><b>Starting on the</b> ${dateStart} <b>To</b> ${dateEnd}</p>
+                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;"><b>Number of People: </b> ${body.people} including ${body.peopleFemale} Women -  ${body.peopleMale} Man</p>
+                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;"><b>Interest: </b> ${body.interest}</p>
+                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;"><b>Message: </b> ${body.message}</p>
+                            <p style="font-size: 14px; line-height: 1.2; text-align: center; mso-line-height-alt: 17px; margin: 0;"><b>Time and date Calling: </b> ${dateTimeCall} <b>on the</b> ${dateCall} </p>
                           </div>
                         </div>
                         <!--[if mso]></td></tr></table><![endif]-->
