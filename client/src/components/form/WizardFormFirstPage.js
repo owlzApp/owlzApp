@@ -88,6 +88,7 @@ const WizardFormFirstPage = props => {
     input,
     label,
     type,
+
     meta: { error, touched }
   }) => (
     <div className="block-collaps">
@@ -108,19 +109,29 @@ const WizardFormFirstPage = props => {
     </div>
   );
 
+  const renderFieldCountTotal = ({ input, type, gender, icon }) => (
+    <div>
+      <div className="input-form">
+        <NumericInput
+          mobile
+          className="form-control"
+          min={0}
+          max={100}
+          {...input}
+          type={type}
+        />
+        <span>
+          <i class={`fas ${icon}`}></i> {gender}
+        </span>
+      </div>
+    </div>
+  );
+
   const renderError = ({ meta: { error, touched } }) => (
     <div>
       {touched && error && <span className="error-color"> {error}</span>}
     </div>
   );
-
-  const renderTotalValue = value => {
-    if (value === 0) {
-      return <span></span>;
-    } else {
-      return value;
-    }
-  };
 
   const renderTitleCollaps = (value, arrow) => {
     return (
@@ -128,8 +139,27 @@ const WizardFormFirstPage = props => {
         <div className="right">
           <i class={`fas ${arrow}`}></i>
         </div>
+
         <div class="flex-container">
-          <div>Number: {renderTotalValue(value)}</div>
+          <div className="hidden-input">
+            <Field
+              name="peopleFemale"
+              type="number"
+              gender="Women"
+              component={renderFieldCountTotal}
+              icon="fa-female"
+            />
+          </div>
+          ,
+          <div className="hidden-input">
+            <Field
+              gender="Man"
+              name="peopleMale"
+              type="number"
+              component={renderFieldCountTotal}
+              icon="fa-male"
+            />
+          </div>
         </div>
       </div>
     );
@@ -191,7 +221,7 @@ const WizardFormFirstPage = props => {
       <div className="row">
         <div className="col m6 s12">
           <label>Guest</label>
-          <Field name="peopleFemale" component={renderError} />
+          {<Field name="peopleFemale" component={renderError} />}
           <Collapsible
             className="box-collaps"
             trigger={renderTitleCollaps(value, arrow)}
