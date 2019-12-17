@@ -6,11 +6,11 @@ import { SelectList } from "react-widgets";
 import "react-widgets/dist/css/react-widgets.css";
 
 const interests = [
-  "Nightclubs",
-  "Restaurants",
-  "Living Accommodations",
-  "Events",
-  "Cars",
+  "Bottle Service",
+  "Restaurant Reservations",
+  "Accommodations",
+  "Seasonal Events",
+  "Transportation",
   "Yachts & Boats"
 ];
 
@@ -45,7 +45,7 @@ const renderFieldMessage = ({
 );
 
 const WizardFormSecondPage = props => {
-  const { handleSubmit, previousPage, pristine, reset, submitting } = props;
+  const { handleSubmit, previousPage, pristine, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
@@ -54,7 +54,7 @@ const WizardFormSecondPage = props => {
             name="interest"
             component={renderSelectList}
             data={interests}
-            label="Principal Interest or Activity"
+            label="Select Interest(s)"
           />
         </div>
         <div className="col m12 s12">
@@ -64,7 +64,7 @@ const WizardFormSecondPage = props => {
             name="message"
             type="text"
             component={renderFieldMessage}
-            placeholder="Any additional information ex. special occasion"
+            placeholder="Example: Language, Any additional information ex. special occasion"
           />
         </div>
       </div>
@@ -85,7 +85,6 @@ const WizardFormSecondPage = props => {
           className="back-home left"
           type="button"
           disabled={pristine || submitting}
-          onClick={reset}
         >
           <Link to="/">
             <i className="far fa-arrow-alt-circle-left"></i> Return home

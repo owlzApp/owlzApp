@@ -98,6 +98,10 @@ input:focus:not([readonly]){
   border-left: none !important;
 }
 
+.rw-calendar-footer {
+  display: none;
+}
+
 button:focus {
   outline: none;
   background-color: #d4af37 !important;
@@ -111,7 +115,7 @@ button:focus {
   box-shadow: none !important;
 }
 
-.people-collaps {
+.Collapsible{
   cursor: pointer;
   border: 1px solid #d4af37;
   border-radius: 4px;
@@ -126,9 +130,9 @@ padding: 10px;
 
 .box-collaps{
   padding: 10px;
-  border: 1px solid #d4af37;
   border-radius: 4px;
   cursor: pointer;
+  margin-bottom: 0px !important;
 }
 
 .is-open{
@@ -194,11 +198,11 @@ input[type="checkbox"]:not(:checked), input[type="checkbox"]:checked {
  }
 
  .reservation hr {
-    width: 156px;
-    display: block;
-    margin-left: 0;
-    border: 1px solid #d4af37 ;
-
+  width: 155px;
+  display: block;
+  margin-left: 0;
+  margin-top: -11px;
+  border: 1px solid #d4af37;
  }
 
  .fix-click{

@@ -19,7 +19,6 @@ const WizardFormThirdPage = props => {
     handleOnChange,
     value,
     pristine,
-    reset,
     submitting,
     arrowCall,
     arrowMoveTime,
@@ -51,7 +50,7 @@ const WizardFormThirdPage = props => {
         time={false}
         min={moment().toDate()}
         value={!value ? null : new Date(value)}
-        placeholder="25 Dec 2019"
+        placeholder="mm/dd/yyyy"
       />
     </div>
   );
@@ -74,8 +73,9 @@ const WizardFormThirdPage = props => {
         open={openEnd}
         value={!value ? null : new Date(value)}
         date={false}
+        defaultValue={moment().toDate()}
         step={30}
-        placeholder="11:30 AM"
+        placeholder="12:00 AM"
       />
       <span className="asterik-time">*Eastern Standard Time</span>
     </div>
@@ -189,7 +189,6 @@ const WizardFormThirdPage = props => {
           className="back-home left"
           type="button"
           disabled={pristine || submitting}
-          onClick={reset}
         >
           <Link to="/">
             <i className="far fa-arrow-alt-circle-left"></i> Return home

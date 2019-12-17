@@ -26,14 +26,16 @@ const WizardFormFourthPage = props => {
 
   const renderInterest = () => {
     return FinalValue.interest.map(function(item, i) {
-      return <li key={i}>{item}</li>;
+      return <li key={i}>{item},</li>;
     });
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h6 className="center">Did You confirm your reservation?</h6>
+        <h6 className="center">
+          Please confirm information prior to submitting
+        </h6>
         <div className="reservation">
           <p>
             <i className="fas fa-portrait"></i> {FinalValue.firstName}{" "}

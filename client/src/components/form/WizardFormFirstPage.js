@@ -13,9 +13,10 @@ momentLocalizer(moment);
 
 const WizardFormFirstPage = props => {
   const {
+    countFemale,
+    countMale,
     handleSubmit,
     pristine,
-    reset,
     submitting,
     value,
     handleOnChangeFemale,
@@ -40,7 +41,7 @@ const WizardFormFirstPage = props => {
     handleToggle,
     open
   }) => (
-    <div>
+    <div className="block-collaps">
       <label>{label}</label>
       <DateTimePicker
         onChange={onChange}
@@ -52,7 +53,7 @@ const WizardFormFirstPage = props => {
         time={false}
         min={moment().toDate()}
         value={!value ? null : new Date(value)}
-        placeholder="24 Dec 2019"
+        placeholder="mm/dd/yyyy "
       />
       {touched && error && <span className="error-color">{error}</span>}
     </div>
@@ -67,7 +68,7 @@ const WizardFormFirstPage = props => {
     handleInputClickEnd,
     handleToggleEnd
   }) => (
-    <div>
+    <div className="block-collaps">
       <label>{label}</label>
       <DateTimePicker
         onChange={onChange}
@@ -78,17 +79,16 @@ const WizardFormFirstPage = props => {
         open={openEnd}
         min={startDate === undefined ? null : new Date(startDate)}
         value={!value ? null : new Date(value)}
-        placeholder="25 Dec 2019"
+        placeholder="mm/dd/yyyy "
       />
       {touched && error && <span className="error-color">{error}</span>}
     </div>
   );
 
   const renderFieldCount = ({
-    input,
+    input: { onChange, value },
     label,
     type,
-
     meta: { error, touched }
   }) => (
     <div className="block-collaps">
@@ -97,11 +97,12 @@ const WizardFormFirstPage = props => {
       </label>
       <div>
         <NumericInput
+          onChange={onChange}
           mobile
           className="form-control"
           min={0}
           max={100}
-          {...input}
+          value={!value ? 0 : value}
           type={type}
         />
       </div>
@@ -109,16 +110,22 @@ const WizardFormFirstPage = props => {
     </div>
   );
 
-  const renderFieldCountTotal = ({ input, type, gender, icon }) => (
+  const renderFieldCountTotal = ({
+    input: { onChange, value },
+    type,
+    gender,
+    icon
+  }) => (
     <div>
       <div className="input-form">
         <NumericInput
+          onChange={onChange}
           mobile
           className="form-control"
           min={0}
           max={100}
-          {...input}
           type={type}
+          value={!value ? 0 : value}
         />
         <span>
           <i class={`fas ${icon}`}></i> {gender}
@@ -135,7 +142,7 @@ const WizardFormFirstPage = props => {
 
   const renderTitleCollaps = (value, arrow) => {
     return (
-      <div onClick={arrowMove}>
+      <div className="box-collaps" onClick={arrowMove}>
         <div className="right">
           <i class={`fas ${arrow}`}></i>
         </div>
@@ -143,21 +150,23 @@ const WizardFormFirstPage = props => {
         <div class="flex-container">
           <div className="hidden-input">
             <Field
-              name="peopleFemale"
-              type="number"
-              gender="Women"
-              component={renderFieldCountTotal}
-              icon="fa-female"
-            />
-          </div>
-          ,
-          <div className="hidden-input">
-            <Field
               gender="Man"
               name="peopleMale"
               type="number"
               component={renderFieldCountTotal}
               icon="fa-male"
+              value={countMale}
+            />
+          </div>
+          ,
+          <div className="hidden-input">
+            <Field
+              name="peopleFemale"
+              type="number"
+              gender="Women"
+              component={renderFieldCountTotal}
+              icon="fa-female"
+              value={countFemale}
             />
           </div>
         </div>
@@ -220,25 +229,24 @@ const WizardFormFirstPage = props => {
       </div>
       <div className="row">
         <div className="col m6 s12">
-          <label>Guest</label>
+          <label>Guests</label>
           {<Field name="peopleFemale" component={renderError} />}
-          <Collapsible
-            className="box-collaps"
-            trigger={renderTitleCollaps(value, arrow)}
-          >
-            <Field
-              name="peopleFemale"
-              type="number"
-              component={renderFieldCount}
-              label="Female"
-              onChange={handleOnChangeFemale}
-            />
+          <Collapsible trigger={renderTitleCollaps(value, arrow)}>
             <Field
               name="peopleMale"
               type="number"
               component={renderFieldCount}
               label="Male"
-              onChange={handleOnChangeMale}
+              handleOnChange={handleOnChangeMale}
+              value={countFemale}
+            />
+            <Field
+              name="peopleFemale"
+              type="number"
+              component={renderFieldCount}
+              label="Female"
+              handleOnChange={handleOnChangeFemale}
+              value={countMale}
             />
           </Collapsible>
         </div>
@@ -253,7 +261,6 @@ const WizardFormFirstPage = props => {
           className="back-home right"
           type="button"
           disabled={pristine || submitting}
-          onClick={reset}
         >
           <Link to="/">
             <i className="far fa-arrow-alt-circle-left"></i> Return home
