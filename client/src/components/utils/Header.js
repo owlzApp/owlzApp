@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { Link } from "react-router-dom";
 import "../css/Header.css";
+import Sidenav from "./Sidenav";
 
 class Header extends React.Component {
   componentDidMount() {
@@ -34,11 +35,15 @@ class Header extends React.Component {
                 <Link to="/about">About Us</Link>
               </li>
               <li>
-                <Link to="/faq">FAQ</Link>
+                <p href="#" data-target="slide-out" class="sidenav-trigger">
+                  FAQ
+                </p>
               </li>
             </ul>
           </div>
         </nav>
+        {/* Sidenav FAQ */}
+        <Sidenav />
 
         <ul className="sidenav" id="mobile-demo">
           <li>
