@@ -1,4 +1,5 @@
 import React from "react";
+import Faq from "../Faq";
 
 class Sidenav extends React.Component {
   render() {
@@ -7,9 +8,11 @@ class Sidenav extends React.Component {
         <li>
           <h5 className="center">FAQ</h5>
         </li>
-
         <li>
           <div class="divider"></div>
+        </li>
+        <li>
+          <Faq />
         </li>
         <li>
           <a href="#!">First Link</a>
