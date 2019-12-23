@@ -236,7 +236,7 @@ const WizardFormFirstPage = props => {
               name="peopleMale"
               type="number"
               component={renderFieldCount}
-              label="Male"
+              label="Man"
               handleOnChange={handleOnChangeMale}
               value={countFemale}
             />
@@ -244,7 +244,7 @@ const WizardFormFirstPage = props => {
               name="peopleFemale"
               type="number"
               component={renderFieldCount}
-              label="Female"
+              label="Women"
               handleOnChange={handleOnChangeFemale}
               value={countMale}
             />

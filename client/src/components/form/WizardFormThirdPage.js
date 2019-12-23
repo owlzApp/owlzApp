@@ -75,7 +75,7 @@ const WizardFormThirdPage = props => {
         date={false}
         defaultValue={moment().toDate()}
         step={30}
-        placeholder="12:00 AM"
+        placeholder="12:00 PM"
       />
       <span className="asterik-time">*Eastern Standard Time</span>
     </div>
