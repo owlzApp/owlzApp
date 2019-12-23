@@ -64,7 +64,7 @@ const WizardFormSecondPage = props => {
             name="message"
             type="text"
             component={renderFieldMessage}
-            placeholder="Example: Language, Additional Information"
+            placeholder="Example: Language, Any additional information ex. special occasion"
           />
         </div>
       </div>
