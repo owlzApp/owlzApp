@@ -28,7 +28,9 @@ class WizardForm extends Component {
       openEnd: "false",
       open: "false",
       arrow: "fa-sort-down",
-      arrowCall: "fa-sort-down"
+      arrowCall: "fa-sort-down",
+      close: false,
+      closeSchedule: false
     };
   }
 
@@ -107,6 +109,26 @@ class WizardForm extends Component {
     if (this.state.arrowCall === "fa-sort-down") {
       this.setState({ arrowCall: "fa-sort-up" });
     } else {
+      this.setState({ arrowCall: "fa-sort-down" });
+    }
+  };
+
+  closeCollapsible = () => {
+    if (this.state.close === false) {
+      this.setState({ close: true });
+      this.setState({ arrow: "fa-sort-up" });
+    } else {
+      this.setState({ close: false });
+      this.setState({ arrow: "fa-sort-down" });
+    }
+  };
+
+  closeScheduleCollapsible = () => {
+    if (this.state.closeSchedule === false) {
+      this.setState({ closeSchedule: true });
+      this.setState({ arrowCall: "fa-sort-up" });
+    } else {
+      this.setState({ closeSchedule: false });
       this.setState({ arrowCall: "fa-sort-down" });
     }
   };
@@ -195,6 +217,8 @@ class WizardForm extends Component {
                     openEnd={this.state.openEnd}
                     arrowMove={this.arrowMove}
                     arrow={this.state.arrow}
+                    closeCollapsible={this.closeCollapsible}
+                    close={this.state.close}
                   />
                 </ScrollAnimation>
               )}
@@ -220,6 +244,8 @@ class WizardForm extends Component {
                     openEnd={this.state.openEnd}
                     arrowMoveTime={this.arrowMoveTime}
                     arrowCall={this.state.arrowCall}
+                    closeScheduleCollapsible={this.closeScheduleCollapsible}
+                    closeSchedule={this.state.closeSchedule}
                   />
                 </ScrollAnimation>
               )}

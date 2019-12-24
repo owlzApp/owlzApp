@@ -27,7 +27,9 @@ const WizardFormThirdPage = props => {
     handleInputClickEndTime,
     handleToggleEnd,
     handleToggleTime,
-    openEnd
+    openEnd,
+    closeSchedule,
+    closeScheduleCollapsible
   } = props;
 
   const renderDateTimePicker = ({
@@ -145,7 +147,11 @@ const WizardFormThirdPage = props => {
       </div>
       <Field name="timeCall" component={renderError} />
       <Field name="dateCall" component={renderError} />
-      <Collapsible trigger={labelForCollaps(arrowCall)}>
+      <Collapsible
+        handleTriggerClick={closeScheduleCollapsible}
+        open={closeSchedule}
+        trigger={labelForCollaps(arrowCall)}
+      >
         <div className="row">
           <div className="col m6 s12">
             <Field
@@ -170,6 +176,13 @@ const WizardFormThirdPage = props => {
             />
           </div>
         </div>
+        <button
+          className="btn-close-col right"
+          type="button"
+          onClick={closeScheduleCollapsible}
+        >
+          close
+        </button>
       </Collapsible>
       <div className="row">
         <button

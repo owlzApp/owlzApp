@@ -30,7 +30,9 @@ const WizardFormFirstPage = props => {
     open,
     openEnd,
     arrowMove,
-    arrow
+    arrow,
+    closeCollapsible,
+    close
   } = props;
 
   const renderDateTimePicker = ({
@@ -231,12 +233,16 @@ const WizardFormFirstPage = props => {
         <div className="col m6 s12">
           <label>Guests</label>
           {<Field name="peopleFemale" component={renderError} />}
-          <Collapsible trigger={renderTitleCollaps(value, arrow)}>
+          <Collapsible
+            handleTriggerClick={closeCollapsible}
+            open={close}
+            trigger={renderTitleCollaps(value, arrow)}
+          >
             <Field
               name="peopleMale"
               type="number"
               component={renderFieldCount}
-              label="Male"
+              label="Man"
               handleOnChange={handleOnChangeMale}
               value={countFemale}
             />
@@ -244,10 +250,17 @@ const WizardFormFirstPage = props => {
               name="peopleFemale"
               type="number"
               component={renderFieldCount}
-              label="Female"
+              label="Women"
               handleOnChange={handleOnChangeFemale}
               value={countMale}
             />
+            <button
+              className="btn-close-col right"
+              type="button"
+              onClick={closeCollapsible}
+            >
+              Save
+            </button>
           </Collapsible>
         </div>
       </div>
