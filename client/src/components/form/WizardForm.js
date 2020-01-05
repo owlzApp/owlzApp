@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import WizardFormFirstPage from "./WizardFormFirstPage";
-import WizardFormSecondPage from "./WizardFormSecondPage";
-import WizardFormThirdPage from "./WizardFormThirdPage";
-import WizardFormFourthPage from "./WizardFormFourthPage";
-import ProgressBar from "./ProgressBar";
-import "../css/formReservation.css";
-import "../css/ProgressBar.css";
-import { connect } from "react-redux";
-import * as actions from "../actions";
-import BoxImage from "../utils/BoxImage";
-import ScrollAnimation from "react-animate-on-scroll";
-import M from "materialize-css/dist/js/materialize.min.js";
+import React, { Component } from 'react';
+import WizardFormFirstPage from './WizardFormFirstPage';
+import WizardFormSecondPage from './WizardFormSecondPage';
+import WizardFormThirdPage from './WizardFormThirdPage';
+import WizardFormFourthPage from './WizardFormFourthPage';
+import ProgressBar from './ProgressBar';
+import '../css/formReservation.css';
+import '../css/ProgressBar.css';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import BoxImage from '../utils/BoxImage';
+import ScrollAnimation from 'react-animate-on-scroll';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 class WizardForm extends Component {
   constructor(props) {
@@ -19,51 +19,51 @@ class WizardForm extends Component {
     this.previousPage = this.previousPage.bind(this);
     this.state = {
       page: 1,
-      color: "item-active",
+      color: 'item-active',
       countFemale: 0,
       countMale: 0,
       startDate: new Date(),
       CountTotal: 0,
       finalValue: [],
-      openEnd: "false",
-      open: "false",
-      arrow: "fa-sort-down",
-      arrowCall: "fa-sort-down",
+      openEnd: 'false',
+      open: 'false',
+      arrow: 'fa-sort-down',
+      arrowCall: 'fa-sort-down',
       close: false,
       closeSchedule: false
     };
   }
 
   componentDidMount() {
-    const elemCollapsible = document.querySelectorAll(".collapsible");
+    const elemCollapsible = document.querySelectorAll('.collapsible');
     M.Collapsible.init(elemCollapsible, {});
 
-    const elems = document.querySelectorAll(".datepicker");
+    const elems = document.querySelectorAll('.datepicker');
     M.Datepicker.init(elems, {});
   }
 
   handleInputClick = event => {
-    if (event.target.tagName === "INPUT") {
-      this.setState({ open: "date" });
+    if (event.target.tagName === 'INPUT') {
+      this.setState({ open: 'date' });
     }
   };
 
   handleInputClickEnd = event => {
-    if (event.target.tagName === "INPUT") {
-      this.setState({ openEnd: "date" });
+    if (event.target.tagName === 'INPUT') {
+      this.setState({ openEnd: 'date' });
     }
   };
 
   handleToggle = () => {
-    var toggledState = this.state.open ? false : "date";
+    var toggledState = this.state.open ? false : 'date';
     this.setState({ open: toggledState });
-    this.setState({ openEnd: "date" });
+    this.setState({ openEnd: 'date' });
   };
 
   handleToggleEnd = () => {
-    var toggledState = this.state.openEnd ? false : "date";
+    var toggledState = this.state.openEnd ? false : 'date';
     this.setState({ openEnd: toggledState });
-    this.setState({ open: "false" });
+    this.setState({ open: 'false' });
   };
 
   whenSeletedDate = value => {
@@ -86,50 +86,50 @@ class WizardForm extends Component {
 
   // Input Call back Page 3
   handleInputClickEndTime = event => {
-    if (event.target.tagName === "INPUT") {
-      this.setState({ openEnd: "time" });
+    if (event.target.tagName === 'INPUT') {
+      this.setState({ openEnd: 'time' });
     }
   };
 
   handleToggleTime = () => {
-    var toggledState = this.state.open ? false : "date";
+    var toggledState = this.state.open ? false : 'date';
     this.setState({ open: toggledState });
-    this.setState({ openEnd: "time" });
+    this.setState({ openEnd: 'time' });
   };
 
   arrowMove = () => {
-    if (this.state.arrow === "fa-sort-down") {
-      this.setState({ arrow: "fa-sort-up" });
+    if (this.state.arrow === 'fa-sort-down') {
+      this.setState({ arrow: 'fa-sort-up' });
     } else {
-      this.setState({ arrow: "fa-sort-down" });
+      this.setState({ arrow: 'fa-sort-down' });
     }
   };
 
   arrowMoveTime = () => {
-    if (this.state.arrowCall === "fa-sort-down") {
-      this.setState({ arrowCall: "fa-sort-up" });
+    if (this.state.arrowCall === 'fa-sort-down') {
+      this.setState({ arrowCall: 'fa-sort-up' });
     } else {
-      this.setState({ arrowCall: "fa-sort-down" });
+      this.setState({ arrowCall: 'fa-sort-down' });
     }
   };
 
   closeCollapsible = () => {
     if (this.state.close === false) {
       this.setState({ close: true });
-      this.setState({ arrow: "fa-sort-up" });
+      this.setState({ arrow: 'fa-sort-up' });
     } else {
       this.setState({ close: false });
-      this.setState({ arrow: "fa-sort-down" });
+      this.setState({ arrow: 'fa-sort-down' });
     }
   };
 
   closeScheduleCollapsible = () => {
     if (this.state.closeSchedule === false) {
       this.setState({ closeSchedule: true });
-      this.setState({ arrowCall: "fa-sort-up" });
+      this.setState({ arrowCall: 'fa-sort-up' });
     } else {
       this.setState({ closeSchedule: false });
-      this.setState({ arrowCall: "fa-sort-down" });
+      this.setState({ arrowCall: 'fa-sort-down' });
     }
   };
 
@@ -165,6 +165,7 @@ class WizardForm extends Component {
   }
 
   onSubmit = form => {
+    const totalPeople = form.peopleFemale + form.peopleMale;
     form = {
       email: form.email,
       firstName: form.firstName,
@@ -174,7 +175,7 @@ class WizardForm extends Component {
       city: form.city,
       date: form.date,
       dateEnd: form.dateEnd,
-      people: this.state.CountTotal,
+      people: totalPeople,
       peopleFemale: form.peopleFemale,
       peopleMale: form.peopleMale,
       message: form.message,

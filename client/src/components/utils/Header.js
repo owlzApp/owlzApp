@@ -1,14 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import M from "materialize-css/dist/js/materialize.min.js";
-import { Link } from "react-router-dom";
-import "../css/Header.css";
-import Sidenav from "./Sidenav";
+import React from 'react';
+import { connect } from 'react-redux';
+import M from 'materialize-css/dist/js/materialize.min.js';
+import { Link } from 'react-router-dom';
+import '../css/Header.css';
+import Sidenav from './Sidenav';
 
 class Header extends React.Component {
   componentDidMount() {
     // SideBar
-    var elems = document.querySelectorAll(".sidenav");
+    var elems = document.querySelectorAll('.sidenav');
     M.Sidenav.init(elems, {});
   }
 
@@ -19,7 +19,7 @@ class Header extends React.Component {
           <div className="nav-wrapper">
             <Link to="/" className="brand-logo">
               <img
-                src={process.env.PUBLIC_URL + "/images/logo.png"}
+                src={process.env.PUBLIC_URL + '/images/logo.png'}
                 className="logo"
                 alt="logo"
               />
@@ -35,7 +35,7 @@ class Header extends React.Component {
                 <Link to="/about">About Us</Link>
               </li>
               <li>
-                <p href="#" data-target="slide-out" class="sidenav-trigger">
+                <p href="#" data-target="slide-out" className="sidenav-trigger">
                   FAQ
                 </p>
               </li>
